@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Abstract;
+﻿using CoreLayer.DataAccess.EntityFramework;
+using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,26 +9,8 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Concrete.Repositories
 {
-    class CategoryRepository : ICategoryDal
+    class CategoryRepository :GenericRepository<Category>, ICategoryDal
     {
-        public void Add(Category category)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(Category category)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Category> List()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Category category)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

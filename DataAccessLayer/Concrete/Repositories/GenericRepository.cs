@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -7,7 +8,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Concrete.Repositories
+namespace CoreLayer.DataAccess.EntityFramework
 {
     public class GenericRepository<TEntity> : IRepository<TEntity>
         where TEntity : class
@@ -16,18 +17,21 @@ namespace DataAccessLayer.Concrete.Repositories
         DbSet<TEntity> _entity;
         public GenericRepository()
         {
+           
             _entity = context.Set<TEntity>();
         }
 
         public void Add(TEntity entity)
         {
-            _entity.Add(entity);
+            var addedEntity = context.Entry(entity);
+            addedEntity.State = EntityState.Added;
             context.SaveChanges();
         }
 
         public void Delete(TEntity entity)
         {
-            _entity.Remove(entity);
+            var deletedEntity = context.Entry(entity);
+            deletedEntity.State = EntityState.Deleted;
             context.SaveChanges();
         }
 
@@ -44,6 +48,8 @@ namespace DataAccessLayer.Concrete.Repositories
 
         public void Update(TEntity entity)
         {
+            var updatedEntity = context.Entry(entity);
+            updatedEntity.State = EntityState.Modified;
             context.SaveChanges();
         }
     }

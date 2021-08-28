@@ -1,0 +1,32 @@
+﻿@using EntityLayer.Concrete
+@model List<Category> /*Razor syntax*/
+@{
+    Layout = null;
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<br />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Id Numarası</th>
+            <th>Kategori</th>
+            <th>Açıklama</th>
+            <th>Durum</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.CategoryName</td>
+            <td>@item.CategoryDescription</td>
+            <td>@item.CategoryStatus</td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+<br />
+<a href="/Category/AddCategory" class="btn btn-info">Yeni Kategori </a>

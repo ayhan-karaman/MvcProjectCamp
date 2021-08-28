@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<h2>İstatikler Sayfası</h2>
+
+<div class="row justify-content-lg-around d-flex text-white">
+
+
+    <div class="small-box bg-success col-md-3" style="margin:10px">
+        <div class="inner text-center">
+            <h5>Toplam Kategori Sayısı</h5>
+        </div>
+        <div class="inner text-center">
+            <h3>@ViewBag.CategoryCount</h3>
+        </div>
+        <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+        </div>
+
+    </div>
+   
+
+    @* Toplam Yazılım Kategorisi Başlık Sayısı *@
+<div class="small-box bg-info col-md-3" style="margin:10px">
+    <div class="inner text-center text-white text-bold">
+        <h4>Kategorisi  "YAZILIM" Olan Başlık Sayısı</h4>
+    </div>
+    <div class="inner text-center text-white">
+        <h3>@ViewBag.Heading</h3>
+    </div>
+    <div class="icon">
+        <i class="ion ion-stats-bars"></i>
+    </div>
+</div>
+
+    @* Yazar adında 'a' harfi geçen yazar sayısı *@
+<div class="small-box bg-gradient-blue col-md-3" style="margin:10px">
+    <div class="inner text-center">
+        <h5>Yazar Adında 'A' Harfi Geçenler</h5>
+    </div>
+    <div class="inner text-center">
+        <h3>@ViewBag.Writer</h3>
+    </div>
+    <div class="icon">
+        <i class="ion ion-stats-bars"></i>
+    </div>
+  
+</div>
+
+
+    @* En fazla başlığa sahip kategori adı *@
+<div class="small-box bg-indigo col-md-3" style="margin:10px">
+    <div class="inner text-center">
+        <h4>En Fazla Başlığa Sahip Kategori</h4>
+    </div>
+    <div class="inner text-center">
+        <h4>@ViewBag.HeadingMax</h4>
+    </div>
+    <div class="icon">
+        <i class="ion ion-stats-bars"></i>
+    </div>
+</div>
+
+
+    @* Kategori tablosunda durumu true olan kategoriler
+        ile false olan kategoriler arasındaki sayısal fark *@
+<div class="small-box bg-gradient-orange col-md-3" style="margin:10px">
+    <div class="inner text-center text-white">
+        <h5>Kategori Aktif Pasif Farkı</h5>
+    </div>
+    <div class="inner text-center text-white">
+        <h3>@ViewBag.StatusDiffrerent</h3>
+    </div>
+    <div class="icon">
+        <i class="ion ion-stats-bars"></i>
+    </div>
+</div>
+    @* Toplam İçerik Sayısı *@
+<div class="small-box bg-gradient-red col-md-3" style="margin:10px">
+    <div class="inner text-center">
+        <h5>Toplam İçerik Sayısı</h5>
+    </div>
+    <div class="inner text-center">
+        <h3>@ViewBag.ContentCount</h3>
+    </div>
+    <div class="icon">
+        <i class="ion ion-stats-bars"></i>
+    </div>
+</div>
+
+</div>
+
+
+
+

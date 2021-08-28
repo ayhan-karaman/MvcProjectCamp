@@ -1,0 +1,33 @@
+﻿@model EntityLayer.Concrete.Heading
+@{
+    ViewBag.Title = "AddHeading";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<h2>AddHeading</h2>
+<div class="container">
+    <div class="row d-flex justify-content-around">
+        <div role="form" class="col-md-6 ">
+            @using (Html.BeginForm("AddHeading", "Heading", FormMethod.Post))
+            {
+                <br />
+                <div class="form-group">
+
+                    @Html.Label("Başlık Adı");
+                    @Html.TextBoxFor(h => h.HeadingName, new { @class = "form-control", @minlength = "1" })
+                    @Html.ValidationMessageFor(w => w.HeadingName, null, new { @class = "text-danger", @required = "" })
+                </div>
+                <br />
+                @Html.Label("Kategorisi");
+                @Html.DropDownListFor(c => c.CategoryId, (List<SelectListItem>)ViewBag.CategoryList, new { @class = "form-control" })
+                @Html.ValidationMessageFor(w => w.CategoryId, "", new { @class = "text-danger" })
+                <br />
+                @Html.Label("Yazarı");
+                @Html.DropDownListFor(c => c.WriterId, (List<SelectListItem>)ViewBag.WriterList, new { @class = "form-control" })
+                @Html.ValidationMessageFor(w => w.CategoryId, "", new { @class = "text-danger" })
+                <br />
+                <button style="margin-bottom:10px" class="btn btn-info">Başlık Ekle</button>
+            }
+        </div>
+                </div>
+            </div>
