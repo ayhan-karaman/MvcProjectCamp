@@ -1,9 +1,9 @@
 ﻿using BusinessLayer.Concrete;
 using BusinessLayer.DependencyResolvers.Ninject;
 using BusinessLayer.ValidationRules.FluentValidation;
+using DataAccessLayer.Concrete.Repositories.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
-using MvcKamp.MvcUI.EntityFramework;
 using Ninject;
 using System;
 using System.Collections.Generic;

@@ -2,7 +2,7 @@
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
 
-namespace MvcKamp.MvcUI.EntityFramework
+namespace DataAccessLayer.Concrete.Repositories.EntityFramework
 {
     public class EfWriterDal:GenericRepository<Writer>, IWriterDal
     {

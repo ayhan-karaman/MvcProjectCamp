@@ -1,0 +1,42 @@
+﻿<br />
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+    Hakkımızda Metni Oluştur
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Hakkımızda Metin Girişi</h5>
+                <button type="button" class="btn-close btn-danger" data-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form action="/About/AddAbout" method="post">
+                <div class="modal-body">
+                    <label>Hakkımızda Metin 1</label>
+                    <input type="text" name="AboutDetail1" class="form-control" />
+                    <br />
+                    <label>Hakkımızda Metin 2</label>
+                    <input type="text" name="AboutDetail2" class="form-control" />
+                    <br />
+                    <label>Hakkımızda Görsel 1</label>
+                    <input type="text" name="AboutImage1" class="form-control" />
+                    <br />
+                    <label>Hakkımızda Görsel 2</label>
+                    <input type="text" name="AboutImage2" class="form-control" />
+
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button class="btn btn-info">Kaydet </button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Vazgeç</button>
+
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

@@ -1,8 +1,8 @@
 ﻿using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules.FluentValidation;
+using DataAccessLayer.Concrete.Repositories.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
-using MvcKamp.MvcUI.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;

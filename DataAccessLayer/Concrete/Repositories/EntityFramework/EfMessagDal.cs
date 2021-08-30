@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Concrete.Repositories
+namespace DataAccessLayer.Concrete.Repositories.EntityFramework
 {
-    class CategoryRepository :GenericRepository<Category>, ICategoryDal
+   public class EfMessagDal: GenericRepository<Message>, IMessageDal
     {
-        
+
     }
 }

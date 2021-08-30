@@ -26,7 +26,7 @@ namespace BusinessLayer.Concrete
 
         public void Delete(Heading heading)
         {
-            throw new NotImplementedException();
+            _headingDal.Update(heading);
         }
 
         public List<Heading> GetAll()
@@ -46,6 +46,7 @@ namespace BusinessLayer.Concrete
 
         public void Update(Heading heading)
         {
+          
             _headingDal.Update(heading);
         }
     }

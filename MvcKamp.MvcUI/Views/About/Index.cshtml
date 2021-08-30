@@ -1,0 +1,43 @@
+﻿@using EntityLayer.Concrete
+@model List<About>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<!-- Button trigger modal -->
+<br />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Hakkında Başlığı</th>
+            <th>Hakkında İçeriği</th>
+
+            <th>Durum Değiştir</th>
+         
+            
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.Id</th>
+                <td>@item.AboutDetail1</td>
+                <td>@item.AboutDetail2</td>
+                <td > <a class="btn btn-info" href="#">Aktif Yap</a> </td>
+                
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+<br />
+
+@Html.Action("AboutPartial", "About")
+
+

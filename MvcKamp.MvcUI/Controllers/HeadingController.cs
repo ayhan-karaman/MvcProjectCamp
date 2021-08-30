@@ -1,6 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using EntityLayer.Concrete;
-using MvcKamp.MvcUI.EntityFramework;
+using DataAccessLayer.Concrete.Repositories.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,25 +23,15 @@ namespace MvcKamp.MvcUI.Controllers
         [HttpGet]
         public ActionResult AddHeading()
         {
-            List<SelectListItem> selectCategories = (from c in _category.GetCategoriesList()
-                                                     select new SelectListItem
-                                                     {
-                                                         Text = c.CategoryName,
-                                                         Value = c.Id.ToString()
-                                                     }
-                                                     ).ToList();
-            List<SelectListItem> selectWriters = (from w in _writer.GetAll()
-                                                     select new SelectListItem
-                                                     {
-                                                         Text = w.WriterName + " "+ w.WriterSurname,
-                                                         Value = w.Id.ToString()
-                                                     }
-                                                    ).ToList();
+            List<SelectListItem> selectCategories = SelectListCategories();
+            List<SelectListItem> selectWriters = SelectListWrites();
             ViewBag.CategoryList = selectCategories;
             ViewBag.WriterList = selectWriters;
             return View();
 
         }
+
+
 
         [HttpPost]
         public  ActionResult AddHeading(Heading heading)
@@ -49,6 +39,72 @@ namespace MvcKamp.MvcUI.Controllers
             heading.HeadingDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             _headingManager.Add(heading);
             return RedirectToAction("Index");
+        }
+
+      
+        [HttpGet]
+        public ActionResult EditHeading(int id)
+        {
+            List<SelectListItem> selectCategories = SelectListCategories();
+            List<SelectListItem> selectWriters = SelectListWrites();
+            ViewBag.CategoryList = selectCategories;
+            ViewBag.WriterList = selectWriters;
+
+            var headingValue = _headingManager.GetHeadingId(id);
+            
+        
+            return View(headingValue);
+        }
+
+        [HttpPost]
+        public ActionResult EditHeading(Heading heading)
+        {
+          
+            _headingManager.Update(heading);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult DeleteHeading(int id)
+        {
+            var headingValue = _headingManager.GetHeadingId(id);
+            _=headingValue.HeadingStatus == false ? headingValue.HeadingStatus = true 
+                : headingValue.HeadingStatus = false;
+            _headingManager.Delete(headingValue);
+            return RedirectToAction("Index");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //pravite methods
+        private List<SelectListItem> SelectListCategories()
+        {
+            return (from c in _category.GetCategoriesList()
+                    select new SelectListItem
+                    {
+                        Text = c.CategoryName,
+                        Value = c.Id.ToString()
+                    }).ToList();
+        }
+
+
+        private List<SelectListItem> SelectListWrites()
+        {
+            return (from w in _writer.GetAll()
+                    select new SelectListItem
+                    {
+                        Text = w.WriterName + " " + w.WriterSurname,
+                        Value = w.Id.ToString()
+                    } ).ToList();
         }
     }
 }

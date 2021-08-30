@@ -56,10 +56,17 @@
     <Compile Include="Abstract\IContactDal.cs" />
     <Compile Include="Abstract\IContentDal.cs" />
     <Compile Include="Abstract\IHeadingDal.cs" />
+    <Compile Include="Abstract\IMessageDal.cs" />
     <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="Abstract\IWriterDal.cs" />
     <Compile Include="Concrete\Context.cs" />
-    <Compile Include="Concrete\Repositories\CategoryRepository.cs" />
+    <Compile Include="Concrete\Repositories\EntityFramework\EfAboutDal.cs" />
+    <Compile Include="Concrete\Repositories\EntityFramework\EfCategoryDal.cs" />
+    <Compile Include="Concrete\Repositories\EntityFramework\EfContactDal.cs" />
+    <Compile Include="Concrete\Repositories\EntityFramework\EfContentDal.cs" />
+    <Compile Include="Concrete\Repositories\EntityFramework\EfHeadingDal.cs" />
+    <Compile Include="Concrete\Repositories\EntityFramework\EfMessagDal.cs" />
+    <Compile Include="Concrete\Repositories\EntityFramework\EfWriterDal.cs" />
     <Compile Include="Concrete\Repositories\GenericRepository.cs" />
     <Compile Include="Migrations\202108181232550_mig1.cs" />
     <Compile Include="Migrations\202108181232550_mig1.designer.cs">
@@ -72,6 +79,22 @@
     <Compile Include="Migrations\202108261643025_mig_writerTitle_add.cs" />
     <Compile Include="Migrations\202108261643025_mig_writerTitle_add.designer.cs">
       <DependentUpon>202108261643025_mig_writerTitle_add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108281139323_writer_img_update.cs" />
+    <Compile Include="Migrations\202108281139323_writer_img_update.designer.cs">
+      <DependentUpon>202108281139323_writer_img_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108281227377_writer_add_writerStatus.cs" />
+    <Compile Include="Migrations\202108281227377_writer_add_writerStatus.designer.cs">
+      <DependentUpon>202108281227377_writer_add_writerStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108281751007_content_add_contentStatus.cs" />
+    <Compile Include="Migrations\202108281751007_content_add_contentStatus.designer.cs">
+      <DependentUpon>202108281751007_content_add_contentStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108281754156_heading_add_headingStatus.cs" />
+    <Compile Include="Migrations\202108281754156_heading_add_headingStatus.designer.cs">
+      <DependentUpon>202108281754156_heading_add_headingStatus.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -95,6 +118,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108261643025_mig_writerTitle_add.resx">
       <DependentUpon>202108261643025_mig_writerTitle_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108281139323_writer_img_update.resx">
+      <DependentUpon>202108281139323_writer_img_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108281227377_writer_add_writerStatus.resx">
+      <DependentUpon>202108281227377_writer_add_writerStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108281751007_content_add_contentStatus.resx">
+      <DependentUpon>202108281751007_content_add_contentStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108281754156_heading_add_headingStatus.resx">
+      <DependentUpon>202108281754156_heading_add_headingStatus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

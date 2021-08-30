@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_adminLayout.cshtml";
 }
 
-<h2>AddHeading</h2>
+
 <div class="container">
     <div class="row d-flex justify-content-around">
         <div role="form" class="col-md-6 ">
@@ -26,8 +26,12 @@
                 @Html.DropDownListFor(c => c.WriterId, (List<SelectListItem>)ViewBag.WriterList, new { @class = "form-control" })
                 @Html.ValidationMessageFor(w => w.CategoryId, "", new { @class = "text-danger" })
                 <br />
-                <button style="margin-bottom:10px" class="btn btn-info">Başlık Ekle</button>
-            }
+                <div class="col-md-12 d-flex justify-content-between" >
+                    <button style="margin-bottom:10px" class="btn btn-info">Başlık Ekle</button>
+                    <a href="/Heading/Index" style="margin-bottom:10px" class="btn bg-indigo  "><i class="fas fa-backward"></i>  Geri Dön</a>
+
+                </div>
+                    }
         </div>
                 </div>
             </div>
