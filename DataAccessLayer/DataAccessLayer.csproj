@@ -65,7 +65,7 @@
     <Compile Include="Concrete\Repositories\EntityFramework\EfContactDal.cs" />
     <Compile Include="Concrete\Repositories\EntityFramework\EfContentDal.cs" />
     <Compile Include="Concrete\Repositories\EntityFramework\EfHeadingDal.cs" />
-    <Compile Include="Concrete\Repositories\EntityFramework\EfMessagDal.cs" />
+    <Compile Include="Concrete\Repositories\EntityFramework\EfMessageDal.cs" />
     <Compile Include="Concrete\Repositories\EntityFramework\EfWriterDal.cs" />
     <Compile Include="Concrete\Repositories\GenericRepository.cs" />
     <Compile Include="Migrations\202108181232550_mig1.cs" />
@@ -95,6 +95,14 @@
     <Compile Include="Migrations\202108281754156_heading_add_headingStatus.cs" />
     <Compile Include="Migrations\202108281754156_heading_add_headingStatus.designer.cs">
       <DependentUpon>202108281754156_heading_add_headingStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108300836147_message_add_class.cs" />
+    <Compile Include="Migrations\202108300836147_message_add_class.designer.cs">
+      <DependentUpon>202108300836147_message_add_class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108301356198_contact_add_datetime.cs" />
+    <Compile Include="Migrations\202108301356198_contact_add_datetime.designer.cs">
+      <DependentUpon>202108301356198_contact_add_datetime.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -130,6 +138,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108281754156_heading_add_headingStatus.resx">
       <DependentUpon>202108281754156_heading_add_headingStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108300836147_message_add_class.resx">
+      <DependentUpon>202108300836147_message_add_class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108301356198_contact_add_datetime.resx">
+      <DependentUpon>202108301356198_contact_add_datetime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

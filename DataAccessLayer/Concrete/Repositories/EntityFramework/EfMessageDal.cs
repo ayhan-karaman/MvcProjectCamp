@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Concrete.Repositories.EntityFramework
 {
-   public class EfMessagDal: GenericRepository<Message>, IMessageDal
+   public class EfMessageDal: GenericRepository<Message>, IMessageDal
     {
 
     }

@@ -1,9 +1,10 @@
-﻿@model EntityLayer.Concrete.Contact
-
+﻿@model EntityLayer.Concrete.Message
 @{
-    ViewBag.Title = "GetContactDetails";
+    ViewBag.Title = "GetSendboxMessageDetaiLs";
     Layout = "~/Views/Shared/_adminLayout.cshtml";
 }
+
+
 <!DOCTYPE html>
 <html>
 
@@ -35,7 +36,7 @@
                     <div class="col-md-9">
                         <div class="card card-primary card-outline">
                             <div class="card-header">
-                                <h3 class="card-title">Gönderen : @Html.DisplayFor(c => c.UserName)</h3>
+                                <h3 class="card-title">Mesaj Oku</h3>
 
                                 <div class="card-tools">
                                     <a href="#" class="btn btn-tool" data-toggle="tooltip" title="Previous"><i class="fas fa-chevron-left"></i></a>
@@ -43,21 +44,23 @@
                                 </div>
                             </div>
                             <!-- /.card-header -->
-
+                          
 
                             <div class="card-body p-0">
                                 <div class="mailbox-read-info">
                                     <h5>@Html.DisplayFor(c => c.Subject)</h5>
                                     <br />
                                     <h6>
-                                        Mail: @Html.DisplayFor(c => c.UserMail)
-                                        <span class="mailbox-read-time float-right">15 Feb. 2015 11:03 PM</span>
+                                        Alıcı Mail: @Html.DisplayFor(c => c.ReceiverMail)
+                                        <span class="mailbox-read-time float-right">
+                                            @(((DateTime)Model.MessageDate).ToString("dd-MMMMM-yyyy"))
+                                        </span>
                                     </h6>
                                 </div>
 
 
                                 <div class="mailbox-read-message">
-                                    <p>@Html.DisplayFor(c => c.Message)</p>
+                                    <p>@Html.DisplayFor(c => c.MessageContent)</p>
 
                                 </div>
                                 <!-- /.mailbox-read-message -->
@@ -67,7 +70,7 @@
                             <div class="card-footer">
                                 <div class="float-right">
                                     <button type="button" class="btn btn-default"><i class="fas fa-reply"></i> Reply</button>
-                                    <button type="button" class="btn btn-default"><i class="fas fa-share"></i> Forward</button>
+                                    <a href="/Message/GetSendboxMessageDetaiLs/" class="btn btn-default"><i class="fas fa-share"></i> Forward</a>
                                 </div>
                                 <button type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Delete</button>
                                 <button type="button" class="btn btn-default"><i class="fas fa-print"></i> Print</button>
@@ -88,5 +91,4 @@
 
 </body>
 </html>
-
 

@@ -1,9 +1,9 @@
-﻿@model EntityLayer.Concrete.Contact
-
+﻿@model EntityLayer.Concrete.Message
 @{
-    ViewBag.Title = "GetContactDetails";
+    ViewBag.Title = "GetInboxMessageDetaiLs";
     Layout = "~/Views/Shared/_adminLayout.cshtml";
 }
+
 <!DOCTYPE html>
 <html>
 
@@ -35,7 +35,7 @@
                     <div class="col-md-9">
                         <div class="card card-primary card-outline">
                             <div class="card-header">
-                                <h3 class="card-title">Gönderen : @Html.DisplayFor(c => c.UserName)</h3>
+                                <a href="#" class="btn btn-info">Okundu Olarak İşaretle</a>
 
                                 <div class="card-tools">
                                     <a href="#" class="btn btn-tool" data-toggle="tooltip" title="Previous"><i class="fas fa-chevron-left"></i></a>
@@ -50,14 +50,16 @@
                                     <h5>@Html.DisplayFor(c => c.Subject)</h5>
                                     <br />
                                     <h6>
-                                        Mail: @Html.DisplayFor(c => c.UserMail)
-                                        <span class="mailbox-read-time float-right">15 Feb. 2015 11:03 PM</span>
+                                        Gönderen : @Html.DisplayFor(c => c.SenderMail)
+                                        <span class="mailbox-read-time float-right">
+                                            @(((DateTime)Model.MessageDate).ToString("dd-MMMMM-yyyy"))
+                                        </span>
                                     </h6>
                                 </div>
 
 
                                 <div class="mailbox-read-message">
-                                    <p>@Html.DisplayFor(c => c.Message)</p>
+                                    <p>@Html.DisplayFor(c => c.MessageContent)</p>
 
                                 </div>
                                 <!-- /.mailbox-read-message -->
@@ -88,5 +90,4 @@
 
 </body>
 </html>
-
 

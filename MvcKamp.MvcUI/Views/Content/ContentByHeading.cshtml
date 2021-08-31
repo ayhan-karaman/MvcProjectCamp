@@ -4,6 +4,11 @@
     ViewBag.Title = "ContentByHeading";
     Layout = "~/Views/Shared/_adminLayout.cshtml";
 }
+@{
+    DateTime bDate;
+    DateTime eDate;
+    TimeSpan result = new TimeSpan();
+ }
 
 
 <!DOCTYPE html>
@@ -45,36 +50,38 @@
                                 <!-- timeline time label -->
                                 @foreach (var item in Model)
                                 {
+                                    bDate = Convert.ToDateTime(@item.ContentDate.ToString("dd-MM-yyy"));
+                                    eDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyy"));
+                                    result = eDate - bDate;
 
-
-                                <div class="time-label">
-                                    <span class="bg-danger">
-                                        @(((DateTime)item.ContentDate).ToString("dd-MMMM-yyyy"))
-                                    </span>
-                                </div>
-                                <!-- timeline item -->
-                              
-                                <div>
-                                    <i class="fas fa-comments bg-warning"></i>
-
-                                    <div class="timeline-item">
-                                        <span class="time">
-                                            <i class="far fa-clock"></i>
-
-                                            @ViewBag.ContentDateDifference Gün Önce
+                                    <div class="time-label">
+                                        <span class="bg-danger">
+                                            @(((DateTime)item.ContentDate).ToString("dd-MMMM-yyyy"))
                                         </span>
+                                    </div>
+                                    <!-- timeline item -->
 
-                                        <h3 class="timeline-header"><a href="#">@item.Writer.WriterName  @item.Writer.WriterSurname</a> sizler için paylaştığı içerikte</h3>
+                                    <div>
+                                        <i class="fas fa-comments bg-warning"></i>
 
-                                        <div class="timeline-body">
-                                           @item.ContentValue
-                                        </div>
-                                        <div class="timeline-footer">
-                                            <a href="/Heading/Index" class="btn btn-warning btn-flat btn-sm">Geri Dön</a>
+                                        <div class="timeline-item">
+                                            <span class="time">
+                                                <i class="far fa-clock"></i>
+                                                
+                                                @result.TotalDays Gün Önce
+                                            </span>
+
+                                            <h3 class="timeline-header"><a href="#">@item.Writer.WriterName  @item.Writer.WriterSurname</a> sizler için paylaştığı içerikte</h3>
+
+                                            <div class="timeline-body">
+                                                @item.ContentValue
+                                            </div>
+                                            <div class="timeline-footer">
+                                                <a href="/Heading/Index" class="btn btn-warning btn-flat btn-sm">Geri Dön</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- END timeline item -->
+                                    <!-- END timeline item -->
                                 }
 
 

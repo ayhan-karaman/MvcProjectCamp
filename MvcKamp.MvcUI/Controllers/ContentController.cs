@@ -21,9 +21,12 @@ namespace MvcKamp.MvcUI.Controllers
         public ActionResult ContentByHeading(int id)
         {
             var contentByHeadingIdValues = _contentManager.GetByHeadingId(id);
-            TimeSpan result = ContentDateTimeDifference(contentByHeadingIdValues);
 
-            ViewBag.ContentDateDifference = result.TotalDays.ToString();
+            foreach (var item in contentByHeadingIdValues)
+            {
+                ViewBag.dd += item.ContentDate.ToString();
+            }
+
 
             return View(contentByHeadingIdValues);
         }
@@ -34,18 +37,5 @@ namespace MvcKamp.MvcUI.Controllers
 
 
 
-        private static TimeSpan ContentDateTimeDifference(List<Content> contentByHeadingIdValues)
-        {
-            string contentDate = "";
-
-            foreach (var item in contentByHeadingIdValues)
-            {
-                contentDate = item.ContentDate.ToString("dd-MM-yyyy");
-            }
-            DateTime bDate = Convert.ToDateTime(contentDate);
-            DateTime kDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy"));
-            TimeSpan result = kDate - bDate;
-            return result;
-        }
     }
 }
