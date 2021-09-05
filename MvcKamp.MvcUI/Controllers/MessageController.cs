@@ -16,6 +16,8 @@ namespace MvcKamp.MvcUI.Controllers
 
         MessageManager _messageManager = new MessageManager(new EfMessageDal());
         MessageValidator messageValidator = new MessageValidator();
+
+
         public ActionResult Inbox()
         {
             var messageValue = _messageManager.GetAllInbox();

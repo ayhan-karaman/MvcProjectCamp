@@ -1,0 +1,65 @@
+﻿
+@helper ProcessToastrs()
+{
+    List<MvcKamp.MvcUI.Toastr> toastrs = MvcKamp.MvcUI.ToastrService.ReadUserQueue();
+
+    if (toastrs != null && toastrs.Count > 0)
+    {
+        foreach (var item in toastrs)
+        {
+
+            @ShowToastr(item);
+
+        }
+    }
+}
+
+@helper ShowToastr(MvcKamp.MvcUI.Toastr item)
+{
+    switch (item.Type)
+    {
+        case MvcKamp.MvcUI.ToastrType.Info:
+            @ToastrInfo(item.Message, item.Title);
+            break;
+        case MvcKamp.MvcUI.ToastrType.Success:
+            @ToastrSuccess(item.Message, item.Title);
+            break;
+        case MvcKamp.MvcUI.ToastrType.Warning:
+            @ToastrWarning(item.Message, item.Title);
+            break;
+        case MvcKamp.MvcUI.ToastrType.Error:
+            @ToastrError(item.Message, item.Title);
+            break;
+        default:
+            @ToastrInfo(item.Message, item.Title);
+            break;
+    }
+
+}
+
+
+@helper ToastrInfo(string message, string title)
+{
+    <script>
+            toastr.info('@message', '@title')
+    </script>
+}
+
+@helper ToastrSuccess(string message, string title)
+{
+    <script>
+            toastr.success('@message', '@title')
+    </script>
+}
+@helper ToastrWarning(string message, string title)
+{
+    <script>
+          toastr.warning('@message','@title')
+    </script>
+}
+@helper ToastrError(string message, string title)
+{
+    <script>
+            toastr.error('@message', '@title')
+    </script>
+}

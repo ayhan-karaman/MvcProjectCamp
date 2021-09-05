@@ -15,11 +15,12 @@ namespace MvcKamp.MvcUI.Controllers
     {
         CategoryManager _category = new CategoryManager(new EfCategoryDal());
 
-
+        [Authorize]
         public ActionResult Index()
         {
             var categoriesValues = _category.GetCategoriesList();
             return View(categoriesValues);
+          
         }
 
          [HttpGet]
@@ -36,6 +37,7 @@ namespace MvcKamp.MvcUI.Controllers
             if (validationResult.IsValid)
             {
                 _category.Add(category);
+              
                 return RedirectToAction("Index");
             }
             else

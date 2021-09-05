@@ -3,6 +3,7 @@
     Layout = null;
 }
 
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,6 +16,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="~/AdminLTE-3.0.4/login-form-19/css/style.css">
+    <link href="~/Content/toastr.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -31,26 +33,29 @@
                         <div class="img d-flex align-items-center justify-content-center" style="background-image: url(/AdminLTE-3.0.4/login-form-19/images/bg.jpg);"></div>
                         <h3 class="text-center mb-0">Hoş Geldiniz</h3>
                         <p class="text-center">Sign in by entering the information below</p>
-                        <form action="#" class="login-form">
+                        @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+                        {
                             <div class="form-group">
                                 <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
-                                <input type="text" class="form-control" placeholder="Kullanıcı Adı" required>
+                                <input name="AdminUserName" type="text" class="form-control" placeholder="Kullanıcı Adı" required>
                             </div>
                             <div class="form-group">
                                 <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-lock"></span></div>
-                                <input type="password" class="form-control" placeholder="********" required>
+                                <input name="AdminPassword" type="password" class="form-control" placeholder="********" required>
                             </div>
                             <div class="form-group d-md-flex">
                                 <div class="w-100 text-md-right">
                                     <a href="#">Şifremi Unuttum</a>
                                 </div>
+
+
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn form-control btn-primary rounded submit px-3">Giriş Yap</button>
+                                <button type="submit" id="btnSave" class="btn form-control btn-primary rounded submit px-3">Giriş Yap</button>
                             </div>
-                        </form>
+                        }
                         <div class="w-100 text-center mt-4 text">
-                         
+
                             <a href="#">Anasayfaya Dön</a>
                         </div>
                     </div>
@@ -59,10 +64,15 @@
         </div>
     </section>
 
-    <script src="js/jquery.min.js"></script>
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/toastr.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
+
+   @ToastrHelper.ProcessToastrs()
+
 
 </body>
 </html>
