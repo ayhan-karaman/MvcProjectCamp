@@ -4,7 +4,12 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_adminLayout.cshtml";
 }
+@{ 
+    string statusText = "";
+    string bgColor = "";
+    string i_tag = "";
 
+}
 <!-- Button trigger modal -->
 <br />
 <table class="table table-hover">
@@ -24,11 +29,25 @@
 
         @foreach (var item in Model)
         {
+            if (item.AboutStatus == false)
+            {
+                statusText = "Aktif Et";
+                bgColor = "btn btn-danger";
+                i_tag = "fas fa-bolt";
+            }
+            else
+            {
+                statusText = "Pasif Et";
+                bgColor = "btn btn-warning";
+                i_tag = "fas fa-exclamation-triangle";
+            }
+
+
             <tr>
                 <th>@item.Id</th>
                 <td>@item.AboutDetail1</td>
                 <td>@item.AboutDetail2</td>
-                <td > <a class="btn btn-info" href="#">Aktif Yap</a> </td>
+                <td > <a class="@bgColor" href="/About/Delete/@item.Id"><i class="@i_tag "></i>   @statusText</a> </td>
                 
             </tr>
         }

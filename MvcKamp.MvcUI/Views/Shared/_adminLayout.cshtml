@@ -52,7 +52,7 @@ to get the desired effect
                         <img src="~/AdminLTE-3.0.4/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                        <a href="#" class="d-block">@Session["AdminUserName"]</a>
                     </div>
                 </div>
 
@@ -61,16 +61,21 @@ to get the desired effect
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
-                        <li class="nav-item has-treeview menu-open">
-                            <a href="/AdminCategory/Index" class="nav-link ">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Kategoriler
+                        @if (User.IsInRole("B"))
+                        {
 
-                                </p>
-                            </a>
+                            <li class="nav-item has-treeview menu-open">
+                                <a href="/AdminCategory/Index" class="nav-link ">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Kategoriler
 
-                        </li>
+                                    </p>
+                                </a>
+
+                            </li>
+
+                        }
                         <li class="nav-item">
                             <a href="~/Heading/Index" class="nav-link">
                                 <i class="fas fa-heading"></i>
@@ -139,16 +144,7 @@ to get the desired effect
                             </a>
 
                         </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-signature"></i>
-                                <p>
-                                    Yazılar
 
-                                </p>
-                            </a>
-
-                        </li>
 
                         <li class="nav-item">
                             <a href="pages/calendar.html" class="nav-link">
@@ -160,7 +156,7 @@ to get the desired effect
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/gallery.html" class="nav-link">
+                            <a href="/Gallery/Index" class="nav-link">
                                 <i class="nav-icon far fa-image"></i>
                                 <p>
                                     Galeri
@@ -231,18 +227,18 @@ to get the desired effect
 
     </div>
     <!-- ./wrapper -->
-    <!-- REQUIRED SCRIPTS -->
     <!-- jQuery -->
-    @*<script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>*@
-    <!-- Bootstrap -->
-    <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE -->
-    <script src="~/AdminLTE-3.0.4/dist/js/adminlte.js"></script>
 
-    <!-- OPTIONAL SCRIPTS -->
     <script src="~/Scripts/jquery-3.4.1.js"></script>
     <script src="~/Scripts/toastr.js"></script>
-    <script src="~/AdminLTE-3.0.4/plugins/chart.js/Chart.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.js"></script>
+    <!-- AdminLTE -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/AdminLTE-3.0.4/dist/js/adminlte.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <!-- OPTIONAL SCRIPTS -->
+    <script src="~/AdminLTE-3.0.4/plugins/chart.js/Chart.js"></script>
     <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
     <script src="~/AdminLTE-3.0.4/dist/js/pages/dashboard3.js"></script>
     @ToastrHelper.ProcessToastrs()

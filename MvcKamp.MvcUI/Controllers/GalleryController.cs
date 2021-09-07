@@ -38,10 +38,23 @@ namespace MvcKamp.MvcUI.Controllers
                 Request.Files[0].SaveAs(Server.MapPath(path));
                 file.ImagePath = path.Substring(1,path.Length -1);
                 fileManager.Add(file);
-                return RedirectToAction("Index");
+                 return RedirectToAction("Index");
             }
 
             return View();
         }
+
+        public PartialViewResult ImagePartial()
+        {
+            return PartialView();
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var imageValue = fileManager.GetById(id);
+            fileManager.Delete(imageValue);
+            return RedirectToAction("Index");
+        }
+
     }
 }

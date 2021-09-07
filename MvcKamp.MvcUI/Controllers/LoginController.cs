@@ -32,6 +32,7 @@ namespace MvcKamp.MvcUI.Controllers
             {
                 FormsAuthentication.SetAuthCookie(adminUserInfo.AdminUserName,false);
                 Session["AdminUserName"] = adminUserInfo.AdminUserName;
+                ViewBag.UserName = adminUserInfo.AdminUserName;
                 ToastrService.AddToQueue(new Toastr("Giriş Yapıldı", "Başarılı", ToastrType.Success));
                 return RedirectToAction("Index", "AdminCategory");
               

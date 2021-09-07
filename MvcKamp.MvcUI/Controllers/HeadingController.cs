@@ -20,6 +20,13 @@ namespace MvcKamp.MvcUI.Controllers
             return View(headingValues);
         }
 
+        public ActionResult GetByCategoryId(int id)
+        {
+            var headingValues = _headingManager.GetAllCategoryId(id);
+            return PartialView(headingValues);
+        }
+
+
         [HttpGet]
         public ActionResult AddHeading()
         {
@@ -38,6 +45,7 @@ namespace MvcKamp.MvcUI.Controllers
         {
             heading.HeadingDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             _headingManager.Add(heading);
+            ToastrService.AddToQueue(new Toastr("Yeni Başlık Eklendi", "", ToastrType.Success));
             return RedirectToAction("Index");
         }
 
@@ -51,7 +59,6 @@ namespace MvcKamp.MvcUI.Controllers
             ViewBag.WriterList = selectWriters;
 
             var headingValue = _headingManager.GetHeadingId(id);
-            
         
             return View(headingValue);
         }
@@ -61,6 +68,7 @@ namespace MvcKamp.MvcUI.Controllers
         {
           
             _headingManager.Update(heading);
+            ToastrService.AddToQueue(new Toastr("Başlık Güncellendi..", "", ToastrType.Success));
             return RedirectToAction("Index");
         }
 
@@ -69,6 +77,14 @@ namespace MvcKamp.MvcUI.Controllers
             var headingValue = _headingManager.GetHeadingId(id);
             _=headingValue.HeadingStatus == false ? headingValue.HeadingStatus = true 
                 : headingValue.HeadingStatus = false;
+            if (headingValue.HeadingStatus == false)
+            {
+                ToastrService.AddToQueue(new Toastr("Başlık Pasif Edildi", "", ToastrType.Warning));
+            }
+            else
+            {
+                ToastrService.AddToQueue(new Toastr("Başlık Aktif Edildi", "", ToastrType.Success));
+            }
             _headingManager.Delete(headingValue);
             return RedirectToAction("Index");
         }

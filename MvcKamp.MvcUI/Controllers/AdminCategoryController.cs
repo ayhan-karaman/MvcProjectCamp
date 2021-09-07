@@ -15,7 +15,7 @@ namespace MvcKamp.MvcUI.Controllers
     {
         CategoryManager _category = new CategoryManager(new EfCategoryDal());
 
-        [Authorize]
+        [Authorize(Roles ="B")]
         public ActionResult Index()
         {
             var categoriesValues = _category.GetCategoriesList();
@@ -23,7 +23,7 @@ namespace MvcKamp.MvcUI.Controllers
           
         }
 
-         [HttpGet]
+        [HttpGet]
         public ActionResult AddCategory()
         {
             return View();
@@ -37,14 +37,14 @@ namespace MvcKamp.MvcUI.Controllers
             if (validationResult.IsValid)
             {
                 _category.Add(category);
-              
+                ToastrService.AddToQueue(new Toastr("Kategori Eklendi", "Ekleme İşlemi", ToastrType.Success));
                 return RedirectToAction("Index");
             }
             else
             {
                 foreach (var item in validationResult.Errors)
                 {
-                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                    ToastrService.AddToQueue(new Toastr(item.ErrorMessage, "", ToastrType.Success));
                 }
             }
 
@@ -57,8 +57,9 @@ namespace MvcKamp.MvcUI.Controllers
         public ActionResult Delete(int id)
         {
             var categoryValue = _category.GetCategoryId(id);
+            
             _category.Delete(categoryValue);
-
+            ToastrService.AddToQueue(new Toastr("Kategori Silindi..", "Silme İşlemi", ToastrType.Warning));
             return RedirectToAction("Index");
         }
 
@@ -72,7 +73,9 @@ namespace MvcKamp.MvcUI.Controllers
         [HttpPost]
         public ActionResult EditCategory(Category category)
         {
+             
             _category.Update(category);
+            ToastrService.AddToQueue(new Toastr("Kategori Güncellendi", "Güncelleme İşlemi"));
             return RedirectToAction("Index");
         }
 

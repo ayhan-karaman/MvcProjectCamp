@@ -17,10 +17,11 @@ namespace MvcKamp.MvcUI.Controllers
         MessageManager _messageManager = new MessageManager(new EfMessageDal());
         MessageValidator messageValidator = new MessageValidator();
 
-
+        [Authorize]
         public ActionResult Inbox()
         {
-            var messageValue = _messageManager.GetAllInbox();
+            var userEmail = (string)Session["AdminUserName"];
+            var messageValue = _messageManager.GetAllInbox(userEmail);
             return View(messageValue);
         }
 
@@ -35,7 +36,8 @@ namespace MvcKamp.MvcUI.Controllers
         // Mesaj gönderme metotları
         public ActionResult Sendbox()
         {
-            var messageValue = _messageManager.GetAllSendbox();
+            var userEmail = (string)Session["AdminUserName"];
+            var messageValue = _messageManager.GetAllSendbox(userEmail);
            
             return View(messageValue);
         }
@@ -63,6 +65,8 @@ namespace MvcKamp.MvcUI.Controllers
             ValidationResult validationResult = messageValidator.Validate(message);
             if (validationResult.IsValid)
             {
+                var userMail = (string)Session["AdminUserName"];
+                message.SenderMail = userMail;
                 message.MessageDate = DateTime.Now;
                 _messageManager.Add(message);
                 return RedirectToAction("Inbox");
@@ -77,5 +81,29 @@ namespace MvcKamp.MvcUI.Controllers
             return View();
         }
 
+        public ActionResult ReadMessage(string mail)
+        {
+            string user = (string)Session["AdminUserName"];
+            mail = user;
+            var messages = _messageManager.GetAllReadMessage(mail);
+            return View(messages);
+        }
+
+        public ActionResult NoReadMessage(string mail)
+        {
+            string user = (string)Session["AdminUserName"];
+            mail = user;
+            var messages = _messageManager.GetAllNoReadMessage(mail);
+            return View(messages);
+        }
+
+
+        public ActionResult ReadingMessage(int id)
+        {
+            var valueMessage = _messageManager.GetById(id);
+            valueMessage.ReadMessage = true;
+            _messageManager.Update(valueMessage);
+            return RedirectToAction("Inbox");
+        }
     }
 }

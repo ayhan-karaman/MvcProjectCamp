@@ -1,42 +1,44 @@
 ﻿<br />
-
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-    Hakkımızda Metni Oluştur
+<!-- Button trigger modal -->
+<button type="button" class="btn bg-indigo" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Yeni Hakkımızda Metni Oluştur
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Hakkımızda Metin Girişi</h5>
-                <button type="button" class="btn-close btn-danger" data-dismiss="modal" aria-label="Close">
-                    <i class="fas fa-times"></i>
-                </button>
+                <h5 class="modal-title" id="exampleModalLabel">Hakkımızda Metni Oluşturma Sayfası</h5>
+                <i style="font-size:30px" type="button" class="btn-close bg-info border-0 fas fa-times-circle text" data-bs-dismiss="modal" aria-label="Close"></i>
             </div>
-            <form action="/About/AddAbout" method="post">
-                <div class="modal-body">
-                    <label>Hakkımızda Metin 1</label>
-                    <input type="text" name="AboutDetail1" class="form-control" />
-                    <br />
-                    <label>Hakkımızda Metin 2</label>
-                    <input type="text" name="AboutDetail2" class="form-control" />
-                    <br />
-                    <label>Hakkımızda Görsel 1</label>
-                    <input type="text" name="AboutImage1" class="form-control" />
-                    <br />
-                    <label>Hakkımızda Görsel 2</label>
-                    <input type="text" name="AboutImage2" class="form-control" />
+            <div class="modal-body">
 
-                    <div class="modal-footer d-flex justify-content-between">
-                        <button class="btn btn-info">Kaydet </button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Vazgeç</button>
+                <form action="/About/AddAbout" method="post">
+                    <div class="modal-body">
+                        <label>Hakkımızda Metin 1</label>
+                        <input type="text" name="AboutDetail1" class="form-control" />
+                        <br />
+                        <label>Hakkımızda Metin 2</label>
+                        <input type="text" name="AboutDetail2" class="form-control" />
+                        <br />
+                        <label>Hakkımızda Görsel 1</label>
+                        <input type="text" name="AboutImage1" class="form-control" />
+                        <br />
+                        <label>Hakkımızda Görsel 2</label>
+                        <input type="text" name="AboutImage2" class="form-control" />
 
+                        <div class="modal-footer d-flex justify-content-between">
+                            <button class="btn btn-info">Kaydet </button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Vazgeç</button>
+
+                        </div>
                     </div>
-                </div>
 
-            </form>
+                </form>
 
+            </div>
+            
         </div>
     </div>
 </div>

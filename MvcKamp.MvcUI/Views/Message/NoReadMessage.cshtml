@@ -1,9 +1,10 @@
 ﻿@using EntityLayer.Concrete
 @model List<Message>
 @{
-    ViewBag.Title = "Sendbox";
+    ViewBag.Title = "NoReadMessage";
     Layout = "~/Views/Shared/_adminLayout.cshtml";
 }
+
 @{
     DateTime sDate;
     DateTime eDate;
@@ -37,7 +38,7 @@
                     <div class="col-md-9">
                         <div class="card card-primary card-outline">
                             <div class="card-header">
-                                <h3 class="card-title">Gönderilen Mesajlar</h3>
+                                <h3 class="card-title">Gelen Mesajlar</h3>
 
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm">
@@ -84,22 +85,26 @@
                                                 eDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyy"));
                                                 result = eDate - sDate;
 
-
-                                                <tr>
-                                                    <td>
-                                                        <div class="icheck-primary">
-                                                            <input type="checkbox" value="" id="check15">
-                                                            <label for="check15"></label>
-                                                        </div>
-                                                    </td>
-                                                    <td class="mailbox-star"><a href="#"><i class="far fa-share-square"></i></a></td>
-                                                    <td class="mailbox-name"><a href="/Message/GetSendboxMessageDetaiLs/@item.Id">@item.ReceiverMail</a></td>
-                                                    <td class="mailbox-subject">
-                                                        <b>@item.Subject</b> - @item.MessageContent.Substring(0, 10) ...
-                                                    </td>
-                                                    <td class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
-                                                    <td class="mailbox-date">@result.TotalDays Gün Önce</td>
-                                                </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="icheck-primary">
+                                                        <input type="checkbox" value="" id="check15">
+                                                        <label for="check15"></label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="icheck-primary">
+                                                        <a href="/Message/ReadingMessage/@item.Id" title="Okundu Olarak İşaretle"><i class="fas fa-envelope"></i></a>
+                                                    </div>
+                                                </td>
+                                                @*<td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>*@
+                                                <td class="mailbox-name"><a title="Mesajı Oku..." href="/Message/GetInboxMessageDetaiLs/@item.Id">@item.SenderMail</a></td>
+                                                <td class="mailbox-subject">
+                                                    <b>@item.Subject</b> - @item.MessageContent.Substring(0, 10) ...
+                                                </td>
+                                                <td class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
+                                                <td class="mailbox-date">@result.TotalDays Gün Önce</td>
+                                            </tr>
                                             }
 
                                         </tbody>
@@ -109,7 +114,7 @@
                                 <!-- /.mail-box-messages -->
                             </div>
                             <!-- /.card-body -->
-                       
+                
                         </div>
                         <!-- /.card -->
                     </div>

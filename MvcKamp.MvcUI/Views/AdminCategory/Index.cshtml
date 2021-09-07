@@ -12,10 +12,11 @@
             <th>#</th>
             <th>Kategori</th>
             <th>Açıklama</th>
-          
-            <th>Sil</th>
-            <th>Güncelle</th>
+
+
             <th>Başlıklar</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
         </tr>
     </thead>
 
@@ -27,10 +28,11 @@
             <th>@item.Id</th>
             <td>@item.CategoryName</td>
             <td>@item.CategoryDescription</td>
-           
-            <td><a href="/AdminCategory/Delete/@item.Id" class="btn btn-danger"> <i class="fas fa-trash-alt"></i> </a> </td>
+            <td><a href="/Heading/GetByCategoryId/@item.Id" class="btn btn-primary"> Başlıklar </a> </td>
             <td><a href="/AdminCategory/EditCategory/@item.Id" class="btn btn-warning"> <i class="fas fa-edit"></i> </a> </td>
-            <td><a href="#" class="btn btn-primary"> Başlıklar </a> </td>
+            <td><a href="/AdminCategory/Delete/@item.Id" class="btn btn-danger" title="Kategoriyi Sil" id="deleteBtn"> <i class="fas fa-trash-alt"></i> </a> </td>
+
+
         </tr>
         }
 

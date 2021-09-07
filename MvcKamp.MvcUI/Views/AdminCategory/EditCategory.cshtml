@@ -25,7 +25,11 @@
                     @Html.TextAreaFor(c => c.CategoryDescription, new { @class = "form-control" })
                     @Html.ValidationMessageFor(c => c.CategoryDescription)
                     <br />
-                    <button class="btn btn-danger">Kategori Güncelle</button>
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-danger">Kategori Güncelle</button>
+                        <a href="/AdminCategory/Index" class="btn btn-danger">Geri Dön</a>
+                    </div>
+                    
                 </div>
             }
         </div>

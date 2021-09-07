@@ -1,13 +1,17 @@
 ﻿@using EntityLayer.Concrete
 @model List<Message>
 @{
-    ViewBag.Title = "Sendbox";
+    ViewBag.Title = "ReadMessage";
     Layout = "~/Views/Shared/_adminLayout.cshtml";
 }
+
 @{
     DateTime sDate;
     DateTime eDate;
     TimeSpan result = new TimeSpan();
+}
+@{
+    string readMessageStatus = "";
 }
 
 <!DOCTYPE html>
@@ -37,7 +41,7 @@
                     <div class="col-md-9">
                         <div class="card card-primary card-outline">
                             <div class="card-header">
-                                <h3 class="card-title">Gönderilen Mesajlar</h3>
+                                <h3 class="card-title">Gelen Mesajlar</h3>
 
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm">
@@ -83,8 +87,7 @@
                                                 sDate = Convert.ToDateTime(@item.MessageDate.ToString("dd-MM-yyy"));
                                                 eDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyy"));
                                                 result = eDate - sDate;
-
-
+                                                
                                                 <tr>
                                                     <td>
                                                         <div class="icheck-primary">
@@ -92,8 +95,13 @@
                                                             <label for="check15"></label>
                                                         </div>
                                                     </td>
-                                                    <td class="mailbox-star"><a href="#"><i class="far fa-share-square"></i></a></td>
-                                                    <td class="mailbox-name"><a href="/Message/GetSendboxMessageDetaiLs/@item.Id">@item.ReceiverMail</a></td>
+                                                    <td>
+                                                        <div class="icheck-primary">
+                                                            <a title="Mesajı Oku..." href="/Message/GetInboxMessageDetaiLs/@item.Id"><i class="fas fa-envelope-open-text"></i></a>
+                                                        </div>
+                                                    </td>
+                                                    @*<td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>*@
+                                                    <td class="mailbox-name"><a href="/Message/GetInboxMessageDetaiLs/@item.Id">@item.SenderMail</a></td>
                                                     <td class="mailbox-subject">
                                                         <b>@item.Subject</b> - @item.MessageContent.Substring(0, 10) ...
                                                     </td>
@@ -164,4 +172,5 @@
 
 </body>
 </html>
+
 

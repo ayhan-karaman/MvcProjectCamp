@@ -31,9 +31,12 @@ namespace MvcKamp.MvcUI.Controllers
 
         public PartialViewResult ContanctMenuPartial()
         {
+            var userMail = (string)Session["AdminUserName"];
             ViewBag.ContactMessages = _contactManager.GetAll().Count();
-            ViewBag.InboxMessages = _messageManager.GetAllInbox().Count();
-            ViewBag.SenboxMessages = _messageManager.GetAllSendbox().Count();
+            ViewBag.InboxMessages = _messageManager.GetAllInbox(userMail).Count();
+            ViewBag.SenboxMessages = _messageManager.GetAllSendbox(userMail).Count();
+            ViewBag.MessageRead = _messageManager.GetAllReadMessage(userMail).Count();
+            ViewBag.MessageNotRead = _messageManager.GetAllNoReadMessage(userMail).Count();
             return PartialView();
         }
 

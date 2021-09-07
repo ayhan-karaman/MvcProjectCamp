@@ -17,6 +17,7 @@ namespace MvcKamp.MvcUI.Controllers
         public ActionResult Index()
         {
             var aboutValues = _aboutManager.GetAll();
+        // ToastrService.AddToQueue(new Toastr("Hakkımızda Sayfası Yükledi", "", ToastrType.Success));
             return View(aboutValues);
         }
 
@@ -29,13 +30,31 @@ namespace MvcKamp.MvcUI.Controllers
         [HttpPost]
         public ActionResult AddAbout(About  about)
         {
-            _aboutManager.Add(about);
+            _aboutManager.Add(about); 
+             ToastrService.AddToQueue(new Toastr("Hakkımızda Bilgisi", "Ekleme İşlemi", ToastrType.Success));
             return RedirectToAction("Index");
         }
 
         public PartialViewResult AboutPartial()
         {
             return PartialView();
+        }
+
+
+        //Delete Action
+        public ActionResult Delete(int id)
+        {
+            var aboutValue = _aboutManager.GetById(id);
+            _ = aboutValue.AboutStatus == false ? aboutValue.AboutStatus = true
+                : aboutValue.AboutStatus = false;
+            if (aboutValue.AboutStatus == false)
+                ToastrService.AddToQueue(new Toastr("Hakkımızda Metni Pasif Edildi", "", ToastrType.Warning));
+            else ToastrService.AddToQueue(new Toastr("Hakkımızda Metni Aktif Edildi", "", ToastrType.Success));
+
+            _aboutManager.Update(aboutValue);
+            return RedirectToAction("Index");
+
+
         }
     }
 }

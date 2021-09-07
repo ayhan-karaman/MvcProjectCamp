@@ -1,0 +1,38 @@
+﻿<button type="button" class="btn bg-indigo" data-bs-toggle="modal" data-bs-target="#exampleModal">
+ Fotoğraf Ekle
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Fotoğraf Ekleme Sayfası</h5>
+                <i style="font-size:30px" type="button" class="btn-close bg-info border-0 fas fa-times-circle text" data-bs-dismiss="modal" aria-label="Close"></i>
+            </div>
+            <div class="modal-body">
+
+                <form action="/Gallery/AddImage" enctype="multipart/form-data" method="post">
+                    <div class="modal-body">
+                        <label>Fotoğrafınızı İsimlendirin</label>
+                        <input type="text" name="ImageName" class="form-control" />
+                        <br />
+                        <label>Fotoğraf Seçiniz</label>
+                        <input type="file" name="ImagePath" class="form-control" />
+                     
+
+                        <div class="modal-footer d-flex justify-content-between">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Vazgeç</button>
+                            <button class="btn btn-info"> Fotoğrafı Ekle </button>
+
+
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>

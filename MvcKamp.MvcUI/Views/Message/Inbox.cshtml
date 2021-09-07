@@ -9,6 +9,10 @@
     DateTime eDate;
     TimeSpan result = new TimeSpan();
 }
+@{ 
+    string readMessageStatus="";
+    string btnTitle = "";
+}
 
 <!DOCTYPE html>
 <html>
@@ -83,22 +87,33 @@
                                                 sDate = Convert.ToDateTime(@item.MessageDate.ToString("dd-MM-yyy"));
                                                 eDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyy"));
                                                 result = eDate - sDate;
+                                                if (item.ReadMessage == false)
+                                                {
+                                                    readMessageStatus = "fas fa-envelope";
+                                                    btnTitle = "Okundu Olarak İşaretle";
+                                                }
+                                                else
+                                                {
+                                                    readMessageStatus = "fas fa-envelope-open-text";
 
-                                            <tr>
-                                                <td>
-                                                    <div class="icheck-primary">
-                                                        <input type="checkbox" value="" id="check15">
-                                                        <label for="check15"></label>
-                                                    </div>
-                                                </td>
-                                                <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
-                                                <td class="mailbox-name"><a href="/Message/GetInboxMessageDetaiLs/@item.Id">@item.SenderMail</a></td>
-                                                <td class="mailbox-subject">
-                                                    <b>@item.Subject</b> - @item.MessageContent.Substring(0, 10) ...
-                                                </td>
-                                                <td class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
-                                                <td class="mailbox-date">@result.TotalDays Gün Önce</td>
-                                            </tr>
+                                                }
+                                                <tr>
+                                                    <td>
+                                                        <div class="icheck-primary">
+                                                            <input type="checkbox" value="@item.Id" id="check15">
+                                                            <label for="check15"></label>
+                                                        </div>
+                                                      
+                                                    </td>
+                                                    <td> <a title="@btnTitle" href="/Message/ReadingMessage/@item.Id"><i class="@readMessageStatus"></i></a></td>
+                                                  @*  <td class="mailbox-star"><a id="reading" href="#"><i class="fas fa-star text-warning "></i></a></td>*@
+                                                    <td class="mailbox-name"><a id="reading" href="/Message/GetInboxMessageDetaiLs/@item.Id">@item.SenderMail</a></td>
+                                                    <td class="mailbox-subject">
+                                                        <b>@item.Subject</b> - @item.MessageContent.Substring(0, 10) ...
+                                                    </td>
+                                                    <td class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
+                                                    <td class="mailbox-date">@result.TotalDays Gün Önce</td>
+                                                </tr>
                                             }
 
                                         </tbody>
@@ -108,30 +123,7 @@
                                 <!-- /.mail-box-messages -->
                             </div>
                             <!-- /.card-body -->
-                            <div class="card-footer p-0">
-                                <div class="mailbox-controls">
-                                    <!-- Check all button -->
-                                    <button type="button" class="btn btn-default btn-sm checkbox-toggle">
-                                        <i class="far fa-square"></i>
-                                    </button>
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
-                                        <button type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
-                                        <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
-                                    </div>
-                                    <!-- /.btn-group -->
-                                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
-                                    <div class="float-right">
-                                        1-50/200
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>
-                                            <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>
-                                        </div>
-                                        <!-- /.btn-group -->
-                                    </div>
-                                    <!-- /.float-right -->
-                                </div>
-                            </div>
+                    
                         </div>
                         <!-- /.card -->
                     </div>
@@ -144,7 +136,6 @@
 
 
     </div>
-
 
     <script>
         $(function () {
@@ -183,6 +174,7 @@
                 }
             })
         })</script>
+
 
 </body>
 </html>
