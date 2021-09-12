@@ -32,10 +32,10 @@ namespace DataAccessLayer.Concrete
 
         public DbSet<Draft> Drafts { get; set; }
 
-     
 
+        public DbSet<MySkill> MySkills { get; set; }
 
-
+        public DbSet<TalentCard> MyTalentCards { get; set; }
 
     }
 

@@ -1,0 +1,38 @@
+﻿@model EntityLayer.Concrete.MySkill
+@{
+    ViewBag.Title = "UpdateSkill";
+    Layout = "~/Views/Shared/_talentCardLayout.cshtml";
+}
+
+
+
+    @using (Html.BeginForm("UpdateSkill", "MySkill",FormMethod.Post, new {@class="col-md-12 skills-right bar_group" }))
+            {
+
+         
+<div class="modal-body">
+
+
+    @Html.HiddenFor(c => c.Id, new { @class = "form-control" })
+    <br />
+    <label>Yetenek Alanınız</label>
+    @Html.TextBoxFor(c => c.SkillName, new { @class = "form-control" })
+   
+    <br />
+    <label>Yetenek Oranınız</label>
+    @Html.TextBoxFor(c => c.Rate, new { @class = "form-control" })
+
+    <br />
+
+    @Html.HiddenFor(c => c.TalentCardId, new { @class = "form-control" })
+    <br />
+
+    <div class="modal-footer d-flex justify-content-between">
+        <button class="btn btn-info">Kaydet </button>
+
+
+    </div>
+</div>
+
+    }
+

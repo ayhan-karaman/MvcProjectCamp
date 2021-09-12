@@ -2,6 +2,8 @@
 using DataAccessLayer.Concrete;
 using DataAccessLayer.Concrete.Repositories.EntityFramework;
 using EntityLayer.Concrete;
+using PagedList;
+using PagedList.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -85,9 +87,9 @@ namespace MvcKamp.MvcUI.Controllers
             return RedirectToAction("MyHeading");
         }
 
-        public ActionResult HeadingAll()
+        public ActionResult HeadingAll(int? page )
         {
-            var headingsValues = _headingManager.GetAll();
+            var headingsValues = _headingManager.GetAll().ToPagedList(page?? 1,4);
             return View(headingsValues);
         }
 

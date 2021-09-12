@@ -1,0 +1,32 @@
+﻿@model EntityLayer.Concrete.MySkill
+
+@{
+    ViewBag.Title = "AddSkill";
+    Layout = "~/Views/Shared/_talentCardLayout.cshtml";
+}
+
+<h3 class="title">Yeteneğinizi Ekleyin</h3>
+
+
+
+    @using (Html.BeginForm("AddSkill", "MySkill", FormMethod.Post,new {@class="col-md-12 skills-right bar_group" }))
+    {
+<div class="modal-body">
+    <input hidden value="@ViewBag.Id" type="text" name="TalentCardId" class="form-control" />
+   
+    <label>Yetenek Alanınız</label>
+    <input type="text" name="SkillName" class="form-control" />
+    <br />
+    <label>Yetenek Oranınız</label>
+    <input type="text" name="Rate" class="form-control" />
+
+
+    <div class="modal-footer d-flex justify-content-between">
+        <button class="btn btn-info">Kaydet </button>
+
+
+    </div>
+</div>
+    }
+
+

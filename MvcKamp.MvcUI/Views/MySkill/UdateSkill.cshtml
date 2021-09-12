@@ -1,0 +1,35 @@
+﻿@model EntityLayer.Concrete.MySkill
+@{
+    ViewBag.Title = "UdateSkill";
+    Layout = "~/Views/Shared/_talentCardLayout.cshtml";
+}
+
+
+
+<h3 class="title">Yeteneğinizi Güncelleyin</h3>
+
+
+<form class="col-md-12 skills-right bar_group" action="/TalentCard/UdateSkill" method="post">
+    <div class="modal-body">
+        <input hidden value=" @Model.TalentCardId" type="text" name="TalentCardId" class="form-control" />
+        <input hidden value=" @Model.Id" type="text" name="Id" class="form-control" />
+        <label>Yetenek Alanınız</label>
+        <input type="text" value="@Model.SkillName" name="SkillName" class="form-control" />
+        <br />
+        <label>Yetenek Oranınız</label>
+        <input type="text" value="@Model.Rate" name="Rate" class="form-control" />
+
+
+        <div class="modal-footer d-flex justify-content-between">
+            <button class="btn btn-info">Kaydet </button>
+
+
+        </div>
+    </div>
+
+</form>
+
+
+
+
+

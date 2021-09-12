@@ -1,0 +1,45 @@
+﻿@using EntityLayer.Concrete
+@model List<MySkill>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_talentCardLayout.cshtml";
+}
+<h3 class="text-center text-white" >Tüm Yetenekler</h3>
+<hr />
+
+<table class="table table-hover text-white">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col"> Adı</th>
+            <th scope="col">Oranı</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+
+        <tr>
+            <th scope="row">@item.Id</th>
+            <td>@item.SkillName</td>
+            <td>@item.Rate</td>
+            <td><a class="btn btn-success" href="/MySkill/AddSkill/@ViewBag.Id"><i class="fas fa-plus-circle"></i></a> </td>
+            <td><a class="btn btn-warning" href="/MySkill/UpdateSkill/@item.Id"><i class="fas fa-edit"></i></a> </td>
+            <td><a class="btn btn-danger" href="/MySkill/SkillDelete/@item.Id"><i class="fas fa-trash-alt"></i></a> </td>
+
+
+
+
+
+        </tr>
+        }
+    </tbody>
+</table>
+<div class="d-flex justify-content-between">
+    <a href="/MySkill/AddSkill/@ViewBag.Id" class="btn btn-outline-success text-white"><i class="fas fa-plus-circle"></i>  Yetenek Ekle</a>
+    <a href="/TalentCard/Index" class="btn btn-outline-info text-white"><i class="fas fa-backward"></i>  Geri Dön</a>
+</div>

@@ -1,5 +1,8 @@
 ﻿@using EntityLayer.Concrete
-@model List<Heading>
+
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Heading>
 @{
     ViewBag.Title = "HeadingAll";
     Layout = "~/Views/Shared/_WriterLayout.cshtml";
@@ -163,9 +166,9 @@
                                     <a class="btn btn-info btn-sm" href="/WriterPanelContent/NewContent/@item.Id">
                                         <i class="fas fa-pencil-alt">
                                         </i>
-                                       Bu Başlığa Yaz
+                                        Bu Başlığa Yaz
                                     </a>
-                                 
+
                                 </td>
                             </tr>
                         }
@@ -175,7 +178,23 @@
             <!-- /.card-body -->
         </div>
     </section>
+  
+    <div class="card-footer">
+        <nav aria-label="Contacts Page Navigation">
+            <ul class="pagination justify-content-center m-0">
+                <li> @Html.PagedListPager((IPagedList)Model, page => Url.Action("HeadingAll", "WriterPanel", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)</li>
+               
+            </ul>
+        </nav>
+    </div>
+
+
+
+
+
+
 </body>
 </html>
+
 
 

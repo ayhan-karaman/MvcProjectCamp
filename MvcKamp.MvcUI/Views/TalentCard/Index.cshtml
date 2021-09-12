@@ -1,0 +1,57 @@
+﻿@using EntityLayer.Concrete;
+@model List<TalentCard>
+@{
+    Layout = "~/Views/Shared/_talentCardLayout.cshtml";
+}
+
+
+
+<!-- main-row-one -->
+
+
+
+@foreach (var item in Model)
+{
+
+    <div class="profile-grid logo wthree">
+        <img width="125" src="@item.ProfileImage" alt="">
+        <h2>@item.Name </h2>
+        <p>@item.About</p>
+
+    </div>
+    <h3 class="title">Yetenekler</h3>
+    <div class="col-md-12 skills-right bar_group">
+        @foreach (var skill in item.Skills)
+        {
+
+
+            <div class='bar_group__bar thin col-md-12' label='@skill.SkillName &nbsp;&nbsp; @skill.Rate%' value='@skill.Rate'></div>
+        }
+    </div>
+    <!--bar-js-->
+    <script src="~/AdminLTE-3.0.4/web/js/bars.js"></script>
+    <div class="social-icons agileits">
+        <ul>
+
+            <li><a href="#" class="git"><i class="fab fa-github"></i></a></li>
+            <li><a href="#" class="be"></a></li>
+            <li><a href="#" class="lkdn"><i class="fab fa-linkedin"></i></a></li>
+
+
+        </ul>
+
+
+    </div>
+
+    <div class="clear"> </div>
+    <br />
+    <br />
+    <a class="btn btn-outline-warning " href="/MySkill/Index/@item.Id">Yeteneklerin</a>
+   
+}
+
+
+
+
+
+

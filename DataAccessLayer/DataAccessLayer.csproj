@@ -62,6 +62,8 @@
     <Compile Include="Abstract\IMessageDal.cs" />
     <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="Abstract\IRoleDal.cs" />
+    <Compile Include="Abstract\IMySkillDal.cs" />
+    <Compile Include="Abstract\ITalentCardDal.cs" />
     <Compile Include="Abstract\IWriterDal.cs" />
     <Compile Include="Concrete\Context.cs" />
     <Compile Include="Concrete\Repositories\EntityFramework\EfAboutDal.cs" />
@@ -74,6 +76,8 @@
     <Compile Include="Concrete\Repositories\EntityFramework\EfImageFileDal.cs" />
     <Compile Include="Concrete\Repositories\EntityFramework\EfMessageDal.cs" />
     <Compile Include="Concrete\Repositories\EntityFramework\EfRoleDal.cs" />
+    <Compile Include="Concrete\Repositories\EntityFramework\EfMySkillDal.cs" />
+    <Compile Include="Concrete\Repositories\EntityFramework\EfTalentCardDal.cs" />
     <Compile Include="Concrete\Repositories\EntityFramework\EfWriterDal.cs" />
     <Compile Include="Concrete\Repositories\GenericRepository.cs" />
     <Compile Include="Migrations\202109100510256_update_database_test.cs" />
@@ -107,6 +111,10 @@
     <Compile Include="Migrations\202109120735038_update_message_mg1.cs" />
     <Compile Include="Migrations\202109120735038_update_message_mg1.designer.cs">
       <DependentUpon>202109120735038_update_message_mg1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109122146286_update_table_skill.cs" />
+    <Compile Include="Migrations\202109122146286_update_table_skill.designer.cs">
+      <DependentUpon>202109122146286_update_table_skill.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -145,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109120735038_update_message_mg1.resx">
       <DependentUpon>202109120735038_update_message_mg1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109122146286_update_table_skill.resx">
+      <DependentUpon>202109122146286_update_table_skill.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

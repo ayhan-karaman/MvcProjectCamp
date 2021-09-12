@@ -25,6 +25,8 @@ namespace EntityLayer.Concrete
 
         public int? RoleId { get; set; }
 
+    
+
         
     }
 }

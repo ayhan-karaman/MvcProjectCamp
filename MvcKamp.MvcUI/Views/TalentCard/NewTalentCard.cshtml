@@ -1,0 +1,35 @@
+﻿@model EntityLayer.Concrete.TalentCard
+@{
+    ViewBag.Title = "NewTalentCard";
+    Layout = "~/Views/Shared/_talentCardLayout.cshtml";
+}
+
+<h3 class="title">Yetenek Kartı Oluştur</h3>
+
+
+
+    @using (Html.BeginForm("NewTalentCard", "TalentCard", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "col-md-12 skills-right bar_group" }))
+    {
+<div class="modal-body">
+
+    @Html.Label("Adınız & SoyAdınız")
+    @Html.TextBoxFor(h => h.Name, new { @class = "form-control", @minlength = "1" })
+    <br />
+    @Html.Label("Hakkınızda")
+    @Html.TextBoxFor(h => h.About, new { @class = "form-control", @minlength = "1" })
+    <br />
+ 
+    @Html.Label("Fotoğraf Eklemek İstermisiniz")
+    @Html.TextBoxFor(h => h.ProfileImage, new { @type = "file", @class = "form-control", @minlength = "1" })
+    <br />
+
+
+    <div class="modal-footer d-flex justify-content-between">
+        <button class="btn btn-info">Kartını Oluştur </button>
+
+
+    </div>
+</div>
+    }
+
+
