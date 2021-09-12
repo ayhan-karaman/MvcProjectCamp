@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace MvcKamp.MvcUI.Controllers
 {
-    [AllowAnonymous]
+ 
     public class TalentCardController : Controller
     {
         TalentCardManager cardManager = new TalentCardManager(new EfTalentCardDal());

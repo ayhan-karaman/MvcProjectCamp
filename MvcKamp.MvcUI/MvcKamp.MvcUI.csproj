@@ -2585,6 +2585,9 @@
     <Content Include="AdminLTE-3.0.4\logreg\scss\style.scss" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <Content Include="Images\TalentProfileImg\73aeea01-c4b9-4ad4-b45a-24de8c6ab2fe.png" />
+    <Content Include="ScreenShot\Statistics.png" />
+    <Content Include="ScreenShot\talent.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -2807,7 +2810,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\GalleryImages\" />
-    <Folder Include="Images\TalentProfileImg\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Error\" />
     <Folder Include="Views\Writer\" />
