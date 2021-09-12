@@ -61,8 +61,12 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
@@ -84,6 +88,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IDraftService.cs" />
     <Compile Include="Abstract\IAboutService.cs" />
     <Compile Include="Abstract\IAdminService.cs" />
     <Compile Include="Abstract\ICategoryService.cs" />
@@ -92,19 +97,23 @@
     <Compile Include="Abstract\IHeadingService.cs" />
     <Compile Include="Abstract\IImageService.cs" />
     <Compile Include="Abstract\IMessageService.cs" />
+    <Compile Include="Abstract\IRoleService.cs" />
     <Compile Include="Abstract\IWriterService.cs" />
     <Compile Include="Concrete\AboutManager.cs" />
     <Compile Include="Concrete\AdminManager.cs" />
     <Compile Include="Concrete\CategoryManager.cs" />
     <Compile Include="Concrete\ContactManager.cs" />
     <Compile Include="Concrete\ContentManager.cs" />
+    <Compile Include="Concrete\DraftManager.cs" />
     <Compile Include="Concrete\HeadingManager.cs" />
     <Compile Include="Concrete\ImageFileManager.cs" />
     <Compile Include="Concrete\MessageManager.cs" />
+    <Compile Include="Concrete\RoleManager.cs" />
     <Compile Include="Concrete\WriterManager.cs" />
     <Compile Include="DependencyResolvers\Ninject\ValidationModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\HashHelper\Hashing.cs" />
+    <Compile Include="Utilities\MultipleButtonAttirbutes\MultipleButton.cs" />
     <Compile Include="ValidationRules\FluentValidation\AboutValidator.cs" />
     <Compile Include="ValidationRules\FluentValidation\AdminValidator.cs" />
     <Compile Include="ValidationRules\FluentValidation\CategoryValidator.cs" />

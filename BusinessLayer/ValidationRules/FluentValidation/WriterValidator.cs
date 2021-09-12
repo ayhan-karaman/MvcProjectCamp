@@ -13,7 +13,7 @@ namespace BusinessLayer.ValidationRules.FluentValidation
         public WriterValidator()
         {
             RuleFor(w => w.WriterName).NotEmpty();
-            RuleFor(w => w.WriterSurname).NotEmpty();
+            RuleFor(w => w.WriterSurName).NotEmpty();
             RuleFor(w => w.WriterAbout).NotEmpty();
             RuleFor(w => w.WriterTitle).NotEmpty();
 
@@ -21,9 +21,12 @@ namespace BusinessLayer.ValidationRules.FluentValidation
             RuleFor(w => w.WriterName).MaximumLength(30);
 
 
+            RuleFor(w => w.WriterEmail).EmailAddress();
+            RuleFor(w => w.WriterPassword).MinimumLength(6).WithMessage("Şifreniz Minimun 6 Karakter Olmalı...");
 
-            RuleFor(w => w.WriterSurname).MinimumLength(3);
-            RuleFor(w => w.WriterSurname).MaximumLength(30);
+
+            RuleFor(w => w.WriterSurName).MinimumLength(3);
+            RuleFor(w => w.WriterSurName).MaximumLength(30);
 
            
 

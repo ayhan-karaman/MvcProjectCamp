@@ -12,10 +12,12 @@ using System.Web.Security;
 
 namespace MvcKamp.MvcUI.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         // GET: Login
         AdminManager context = new AdminManager(new EfAdminDal());
+        WriterManager writerManager = new WriterManager(new EfWriterDal());
         [HttpGet]
         public ActionResult Index()
         {
@@ -48,6 +50,41 @@ namespace MvcKamp.MvcUI.Controllers
             FormsAuthentication.SignOut();
             ToastrService.AddToQueue(new Toastr("Sistemden Çıkış Yapıldı", "Bilgilendirme", ToastrType.Info));
             return RedirectToAction("Index", "Login");
+        }
+
+
+        [HttpGet]
+        public ActionResult WriterLogin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult WriterLogin(Writer writer)
+        {
+            var result = Hashing.CreateHashing(writer.WriterPassword);
+            writer.WriterPassword = result;
+            var WriterUserInfo = writerManager.GetByEmailAndPassword(writer.WriterEmail, writer.WriterPassword);
+            if (WriterUserInfo != null)
+            {
+                FormsAuthentication.SetAuthCookie(WriterUserInfo.WriterEmail, false);
+                Session["WriterEmail"] = WriterUserInfo.WriterEmail;
+                Session["Id"] = WriterUserInfo.Id;
+                Session["WriterUserName"] = WriterUserInfo.WriterName + " " + WriterUserInfo.WriterSurName;
+               
+                ViewBag.UserName = WriterUserInfo.WriterName + WriterUserInfo.WriterSurName;
+                ToastrService.AddToQueue(new Toastr("Yazar Girişi Yapıldı", "Başarılı", ToastrType.Success));
+                return RedirectToAction("MyHeading", "WriterPanel");
+
+            }
+            ToastrService.AddToQueue(new Toastr("Bilgilerinizi Doğru Yazdığınızdan Emin Olunuz!", "Kullanıcı Hatası", ToastrType.Error));
+            return RedirectToAction("WriterLogin");
+        }
+        public ActionResult WriterLogOut()
+        {
+            FormsAuthentication.SignOut();
+            ToastrService.AddToQueue(new Toastr("Sistemden Çıkış Yapıldı", "Bilgilendirme", ToastrType.Info));
+            return RedirectToAction("WriterLogin", "Login");
         }
     }
 }

@@ -12,28 +12,28 @@
                 <br />
                 <div class="form-group">
 
-                    @Html.Label("ID");
-                    @Html.TextBoxFor(h => h.Id, new { @class = "form-control", @disabled = "disabled" })
+                  
+                    @Html.HiddenFor(h => h.Id, new { @class = "form-control", @disabled = "disabled" })
 
                 </div>
                 <div class="form-group">
-                    @Html.Label("Yazar ");
+                    @Html.Label("Yazar ")
                     @Html.DropDownListFor(h => h.WriterId, (List<SelectListItem>)ViewBag.WriterList, new { @class = "form-control" })
 
                 </div>
                 <div class="form-group">
 
-                    @Html.Label("Tarih");
-                    @Html.TextBoxFor(h => h.HeadingDate, new { @class = "form-control" })
+                  
+                    @Html.HiddenFor(h => h.HeadingDate, new { @class = "form-control" })
 
                 </div>
                 <div class="form-group">
-                    @Html.Label("Başlık Adı");
+                    @Html.Label("Başlık Adı")
                     @Html.TextBoxFor(h => h.HeadingName, new { @class = "form-control" })
                     @Html.ValidationMessageFor(w => w.HeadingName, null, new { @class = "text-danger" })
                 </div>
                 <br />
-                @Html.Label("Kategorisi");
+                @Html.Label("Kategorisi")
                 @Html.DropDownListFor(c => c.CategoryId, (List<SelectListItem>)ViewBag.CategoryList, new { @class = "form-control" })
                 @Html.ValidationMessageFor(w => w.CategoryId, "", new { @class = "text-danger" })
                 <br />

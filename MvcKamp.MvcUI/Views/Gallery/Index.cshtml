@@ -58,10 +58,10 @@
                                         <a href="@item.ImagePath" data-toggle="lightbox" data-title="@item.ImageName" data-gallery="gallery">
                                             <img src="@item.ImagePath" class="img-fluid mb-2" alt="white sample" />
                                         </a>
-                                        @if (User.IsInRole("B"))
-                                        {
+                                      
+                                       
                                             <a href="/Gallery/Delete/@item.Id"> <i class="fas fa-trash-alt text-danger"> Fotoğrafı Sil</i> </a>
-                                        }
+                                        
                                     </div>
                                 }
                             </div>
@@ -72,10 +72,9 @@
         </div><!-- /.container-fluid -->
 
     </section>
-    @if (User.IsInRole("B"))
-    {
+   
         @Html.Action("ImagePartial", "Gallery")
-    }
+    
         <!-- /.content -->
         <!-- ./wrapper -->
         <!-- jQuery -->

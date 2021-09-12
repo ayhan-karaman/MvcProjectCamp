@@ -20,6 +20,7 @@ namespace BusinessLayer.Concrete
 
         public void Add(Message message)
         {
+           
             _messageDal.Add(message);
         }
 
@@ -32,7 +33,7 @@ namespace BusinessLayer.Concrete
 
         public List<Message> GetAllInbox(string email)
         {
-            return _messageDal.GetAll(m => m.ReceiverMail == email);
+            return _messageDal.GetAll(m => m.ReceiverMail == email  );
         }
 
         public List<Message> GetAllNoReadMessage(string mail)
@@ -42,21 +43,23 @@ namespace BusinessLayer.Concrete
 
         public List<Message> GetAllReadMessage(string mail)
         {
-            return _messageDal.GetAll(x => x.ReceiverMail == mail).Where(y => y.ReadMessage == true).ToList();
+            return _messageDal.GetAll(x => x.ReceiverMail == mail).Where(y => y.ReadMessage == true ).ToList();
         }
 
         public List<Message> GetAllSendbox(string email)
         {
-            return _messageDal.GetAll(m => m.SenderMail ==  email);
+            return _messageDal.GetAll(m => m.SenderMail ==  email );
         }
 
         public Message GetById(int id)
         {
-            return _messageDal.Get(m => m.Id == id);
+            return _messageDal.Get(m => m.Id == id );
         }
 
         public void Update(Message message)
         {
+           
+         
             _messageDal.Update(message);
         }
     }

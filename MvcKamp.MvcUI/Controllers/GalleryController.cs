@@ -31,17 +31,21 @@ namespace MvcKamp.MvcUI.Controllers
         {
             if (Request.Files.Count > 0)
             {
-              
-                string extension = Path.GetExtension(Request.Files[0].FileName);
-                string fileName = Guid.NewGuid().ToString(format: "D") + extension;
-                string path = "~/Images/GalleryImages/" + fileName;
-                Request.Files[0].SaveAs(Server.MapPath(path));
-                file.ImagePath = path.Substring(1,path.Length -1);
+                ImageUpload(file, "~/Images/GalleryImages/");
                 fileManager.Add(file);
-                 return RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
 
             return View();
+        }
+
+        private void ImageUpload(ImageFile file, string imagePath)
+        {
+            string extension = Path.GetExtension(Request.Files[0].FileName);
+            string fileName = Guid.NewGuid().ToString(format: "D") + extension;
+            string path = imagePath + fileName;
+            Request.Files[0].SaveAs(Server.MapPath(path));
+            file.ImagePath = path.Substring(1, path.Length - 1);
         }
 
         public PartialViewResult ImagePartial()

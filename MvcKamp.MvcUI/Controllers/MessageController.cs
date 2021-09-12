@@ -69,7 +69,7 @@ namespace MvcKamp.MvcUI.Controllers
                 message.SenderMail = userMail;
                 message.MessageDate = DateTime.Now;
                 _messageManager.Add(message);
-                return RedirectToAction("Inbox");
+                return RedirectToAction("Sendbox");
             }
             else
             {

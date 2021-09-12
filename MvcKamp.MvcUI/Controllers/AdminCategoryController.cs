@@ -15,7 +15,7 @@ namespace MvcKamp.MvcUI.Controllers
     {
         CategoryManager _category = new CategoryManager(new EfCategoryDal());
 
-        [Authorize(Roles ="B")]
+       
         public ActionResult Index()
         {
             var categoriesValues = _category.GetCategoriesList();
@@ -57,8 +57,9 @@ namespace MvcKamp.MvcUI.Controllers
         public ActionResult Delete(int id)
         {
             var categoryValue = _category.GetCategoryId(id);
-            
-            _category.Delete(categoryValue);
+            _ = categoryValue.CategoryStatus == false ? categoryValue.CategoryStatus = true 
+                : categoryValue.CategoryStatus = false;
+            _category.Update(categoryValue);
             ToastrService.AddToQueue(new Toastr("Kategori Silindi..", "Silme İşlemi", ToastrType.Warning));
             return RedirectToAction("Index");
         }

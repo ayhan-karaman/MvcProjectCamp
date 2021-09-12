@@ -1,0 +1,36 @@
+﻿@model EntityLayer.Concrete.Heading
+@{
+    ViewBag.Title = "EditHeading";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row d-flex justify-content-around">
+        <div role="form" class="col-md-6 ">
+            @using (Html.BeginForm("EditHeading", "WriterPanel", FormMethod.Post))
+            {
+                <br />
+
+                @Html.HiddenFor(h => h.Id)
+                @Html.HiddenFor(h => h.HeadingDate)
+                @Html.HiddenFor(h => h.WriterId)
+
+                <div class="form-group">
+                    @Html.Label("Başlık Adı");
+                    @Html.TextBoxFor(h => h.HeadingName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(w => w.HeadingName, null, new { @class = "text-danger" })
+                </div>
+                <br />
+                @Html.Label("Kategorisi");
+                @Html.DropDownListFor(c => c.CategoryId, (List<SelectListItem>)ViewBag.CategoryList, new { @class = "form-control" })
+                @Html.ValidationMessageFor(w => w.CategoryId, "", new { @class = "text-danger" })
+                <br />
+                <div class="col-md-12 d-flex justify-content-between">
+                    <button style="margin-bottom:10px" class="btn btn-info">Başlık Güncelle</button>
+                    <a href="/WriterPanel/MyHeading" style="margin-bottom:10px" class="btn bg-indigo  "><i class="fas fa-backward"></i>  Geri Dön</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

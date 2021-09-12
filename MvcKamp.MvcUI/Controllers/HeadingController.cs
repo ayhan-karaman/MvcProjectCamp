@@ -118,7 +118,7 @@ namespace MvcKamp.MvcUI.Controllers
             return (from w in _writer.GetAll()
                     select new SelectListItem
                     {
-                        Text = w.WriterName + " " + w.WriterSurname,
+                        Text = w.WriterName + " " + w.WriterSurName,
                         Value = w.Id.ToString()
                     } ).ToList();
         }

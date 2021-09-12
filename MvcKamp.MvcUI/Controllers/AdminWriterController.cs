@@ -6,6 +6,7 @@ using FluentValidation;
 using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -34,10 +35,17 @@ namespace MvcKamp.MvcUI.Controllers
         {
             WriterValidator validateWriter = new WriterValidator();
             ValidationResult validationResult = validateWriter.Validate(writer);
+            if (Request.Files.Count > 0)
+            {
+                ImageUpload(writer, "~/Images/GalleryImages/");
+            }
             if (validationResult.IsValid)
             {
-                _writerManager.Add(writer);
-                return RedirectToAction("Index");
+               
+                  
+                    _writerManager.Add(writer);
+                    return RedirectToAction("Index");
+                
             }
             else
             {
@@ -46,8 +54,22 @@ namespace MvcKamp.MvcUI.Controllers
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
             }
+
+
+
+
             return View();
         }
+
+        private void ImageUpload(Writer file, string imagePath)
+        {
+            string extension = Path.GetExtension(Request.Files[0].FileName);
+            string fileName = Guid.NewGuid().ToString(format: "D") + extension;
+            string path = imagePath + fileName;
+            Request.Files[0].SaveAs(Server.MapPath(path));
+            file.WriterImage = path.Substring(1, path.Length - 1);
+        }
+
 
 
         [HttpGet]
@@ -62,10 +84,16 @@ namespace MvcKamp.MvcUI.Controllers
         {
            
             ValidationResult validationResult = validateWriter.Validate(writer);
-            if (validationResult.IsValid)
+            if (Request.Files.Count > 0)
             {
-                _writerManager.Update(writer);
-                return RedirectToAction("Index");
+                ImageUpload(writer, "~/Images/GalleryImages/");
+            }
+                if (validationResult.IsValid)
+            {
+
+                    _writerManager.Update(writer);
+                    return RedirectToAction("Index");
+                          
             }
             else
             {

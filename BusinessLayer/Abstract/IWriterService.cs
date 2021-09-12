@@ -7,8 +7,10 @@ namespace BusinessLayer.Abstract
     {
         List<Writer> GetAll();
         Writer GetById(int id);
+        Writer GetByEmailAndPassword(string email, string password);
+        Writer GetByEmail(string email);
         void Add(Writer writer);
         void Delete(Writer writer);
-        void Update(Writer writer);
+        void Update( Writer writer);
     }
 }

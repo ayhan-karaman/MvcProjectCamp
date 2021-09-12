@@ -7,20 +7,20 @@
 
     <div class="container">
         <div class="row d-flex justify-content-around">
-            <div role="form" class="col-md-6 was-validated">
-                @using (Html.BeginForm("AddWriter", "AdminWriter", FormMethod.Post))
+            <div role="form" class="col-md-6">
+                @using (Html.BeginForm("AddWriter", "AdminWriter", FormMethod.Post, new { @enctype = "multipart/form-data" }))
                 {<br />
-                 <div class="form-group">
+                    <div class="form-group">
 
-                 
-                    @Html.Label("Yazar Adı" );
-                    @Html.TextBoxFor(w => w.WriterName, new { @class = "form-control",@required="", @minlength="3" })
-                    @Html.ValidationMessageFor(w => w.WriterName, null, new { @class = "text-danger" })
-                </div>   
-                <br />
+
+                        @Html.Label("Yazar Adı");
+                        @Html.TextBoxFor(w => w.WriterName, new { @class = "form-control",  @minlength = "3" })
+                        @Html.ValidationMessageFor(w => w.WriterSurName, null, new { @class = "text-danger" })
+                    </div>
+                    <br />
                     @Html.Label("Yazar Soyadı");
-                    @Html.TextBoxFor(w => w.WriterSurname, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(w => w.WriterSurname,"", new { @class = "text-danger" })
+                    @Html.TextBoxFor(w => w.WriterSurName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(w => w.WriterSurName, "", new { @class = "text-danger" })
                     <br />
                     @Html.Label("Yazar Hakkında");
                     @Html.TextBoxFor(w => w.WriterAbout, new { @class = "form-control" })
@@ -32,20 +32,23 @@
                     @Html.ValidationMessageFor(w => w.WriterTitle, "", new { @class = "text-danger" })
                     <br />
                     @Html.Label("Yazar Email");
-                    @Html.TextBoxFor(w => w.WriterMail, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(w => w.WriterMail)
+                    @Html.TextBoxFor(w => w.WriterEmail, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(w => w.WriterEmail)
                     <br />
                     @Html.Label("Yazar Şifresi");
-                    @Html.TextBoxFor(w => w.WritePassword, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(w => w.WritePassword)
+                    @Html.TextBoxFor(w => w.WriterPassword, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(w => w.WriterPassword)
                     <br />
                     @Html.Label("Yazar Görsel Link");
-                    @Html.TextBoxFor(w => w.WriterImage, new { @class = "form-control" })
+                    @Html.TextBoxFor(w => w.WriterImage, new { @class = "form-control", @type = "file" })
                     @Html.ValidationMessageFor(w => w.WriterImage)
                     <br />
 
+                    <div class=" d-flex justify-content-between">
+                        <button style="margin-bottom:10px" class="btn btn-info">Yazarı Ekle</button>
 
-                    <button style="margin-bottom:10px" class="btn btn-info">Yazarı Ekle</button>
+                        <a style="margin-bottom:10px" class="btn btn-info">Geri Dön</a>
+                    </div>
                 }
 
             </div>

@@ -5,13 +5,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace EntityLayer.Concrete
 {
    public class Writer
     {
-        [ForeignKey("User")]
+        [Key]
         public int Id { get; set; }
+
+        [StringLength(50)]
+        public string WriterName { get; set; }
+
+        [StringLength(50)]
+        public string WriterSurName { get; set; }
 
         [StringLength(250)]
         public string WriterImage { get; set; }
@@ -19,13 +26,23 @@ namespace EntityLayer.Concrete
         [StringLength(100)]
         public string WriterAbout { get; set; }
 
-      
+
         [StringLength(50)]
         public string WriterTitle { get; set; }
 
+
+        [StringLength(200)]
+        public string WriterEmail { get; set; }
+
+
+        [StringLength(200)]
+        public string WriterPassword { get; set; }
+
         public bool WriterStatus { get; set; }
 
-        public User User { get; set; }
+
+        [StringLength(1)]
+        public string WriterRole { get; set; }
 
 
 

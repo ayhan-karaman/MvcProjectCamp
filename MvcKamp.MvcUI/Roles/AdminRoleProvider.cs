@@ -40,7 +40,17 @@ namespace MvcKamp.MvcUI.Roles
         {
             Context context = new Context();
             var x = context.Admins.FirstOrDefault(y => y.AdminUserName == username);
-            return new string[]  { x.AdminRole};
+            var w = context.Writers.FirstOrDefault(we => we.WriterEmail == username);
+
+            if (x!=null)
+            {
+                return new string[] { x.AdminRole };
+            }
+            else if (w!=null)
+            {
+                return new string[] { w.WriterRole };
+            }
+            return new string[] {  };
         }
 
         public override string[] GetUsersInRole(string roleName)

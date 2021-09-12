@@ -8,6 +8,7 @@
     DateTime bDate;
     DateTime eDate;
     TimeSpan result = new TimeSpan();
+    int itemResult = 0;
  }
 
 
@@ -24,7 +25,7 @@
             <div class="container-fluid ">
                 <div class="row mb-2 justify-content-around">
                     <div class="col-sm-6">
-                        <h1 class="text-center">Başlık Gelecek</h1>
+                        <h1 class="text-center">İçerikler</h1>
                     </div>
 
                 </div>
@@ -35,15 +36,7 @@
 
                 <!-- /.col -->
                 <div class="col-md-10">
-                    <div class="card">
-                        <div class="card-header p-2">
-                            <ul class="nav nav-pills">
-
-                                <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a></li>
-
-                            </ul>
-                        </div><!-- /.card-header -->
-                        <!-- /.tab-pane -->
+                  
                         <div class="tab-pane" id="timeline">
                             <!-- The timeline -->
                             <div class="timeline timeline-inverse">
@@ -53,7 +46,7 @@
                                     bDate = Convert.ToDateTime(@item.ContentDate.ToString("dd-MM-yyy"));
                                     eDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyy"));
                                     result = eDate - bDate;
-
+                                    itemResult = item.HeadingId;
                                     <div class="time-label">
                                         <span class="bg-danger">
                                             @(((DateTime)item.ContentDate).ToString("dd-MMMM-yyyy"))
@@ -67,26 +60,29 @@
                                         <div class="timeline-item">
                                             <span class="time">
                                                 <i class="far fa-clock"></i>
-                                                
+
                                                 @result.TotalDays Gün Önce
                                             </span>
 
-                                            <h3 class="timeline-header"><a href="#">@item.Writer.WriterName  @item.Writer.WriterSurname</a> sizler için paylaştığı içerikte</h3>
+                                            <h3 class="timeline-header"><a href="#">@item.Writer.WriterName  @item.Writer.WriterSurName</a> sizler için paylaştığı içerikte</h3>
 
                                             <div class="timeline-body">
                                                 @item.ContentValue
                                             </div>
-                                            <div class="timeline-footer">
-                                                <a href="/Heading/Index" class="btn btn-warning btn-flat btn-sm">Geri Dön</a>
-                                            </div>
+                                         
                                         </div>
                                     </div>
                                     <!-- END timeline item -->
+
+
                                 }
 
 
                             </div>
+                          
+
                         </div>
+                             
                         <!-- /.tab-pane -->
                         <!-- /.tab-pane -->
                     </div>
@@ -94,7 +90,7 @@
                 </div><!-- /.card-body -->
             </div>
             <!-- /.nav-tabs-custom -->
-        </div>
+       
 </body>
 </html>
 

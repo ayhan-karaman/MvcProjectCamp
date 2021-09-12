@@ -56,10 +56,12 @@
     <Compile Include="Abstract\ICategoryDal.cs" />
     <Compile Include="Abstract\IContactDal.cs" />
     <Compile Include="Abstract\IContentDal.cs" />
+    <Compile Include="Abstract\IDraftDal.cs" />
     <Compile Include="Abstract\IHeadingDal.cs" />
     <Compile Include="Abstract\IImageDal.cs" />
     <Compile Include="Abstract\IMessageDal.cs" />
     <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Abstract\IRoleDal.cs" />
     <Compile Include="Abstract\IWriterDal.cs" />
     <Compile Include="Concrete\Context.cs" />
     <Compile Include="Concrete\Repositories\EntityFramework\EfAboutDal.cs" />
@@ -67,11 +69,45 @@
     <Compile Include="Concrete\Repositories\EntityFramework\EfCategoryDal.cs" />
     <Compile Include="Concrete\Repositories\EntityFramework\EfContactDal.cs" />
     <Compile Include="Concrete\Repositories\EntityFramework\EfContentDal.cs" />
+    <Compile Include="Concrete\Repositories\EntityFramework\EfDraftDal.cs" />
     <Compile Include="Concrete\Repositories\EntityFramework\EfHeadingDal.cs" />
     <Compile Include="Concrete\Repositories\EntityFramework\EfImageFileDal.cs" />
     <Compile Include="Concrete\Repositories\EntityFramework\EfMessageDal.cs" />
+    <Compile Include="Concrete\Repositories\EntityFramework\EfRoleDal.cs" />
     <Compile Include="Concrete\Repositories\EntityFramework\EfWriterDal.cs" />
     <Compile Include="Concrete\Repositories\GenericRepository.cs" />
+    <Compile Include="Migrations\202109100510256_update_database_test.cs" />
+    <Compile Include="Migrations\202109100510256_update_database_test.designer.cs">
+      <DependentUpon>202109100510256_update_database_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109111452094_add_draft_table.cs" />
+    <Compile Include="Migrations\202109111452094_add_draft_table.designer.cs">
+      <DependentUpon>202109111452094_add_draft_table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109111907457_update_message.cs" />
+    <Compile Include="Migrations\202109111907457_update_message.designer.cs">
+      <DependentUpon>202109111907457_update_message.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109112035380_update_message_datetime.cs" />
+    <Compile Include="Migrations\202109112035380_update_message_datetime.designer.cs">
+      <DependentUpon>202109112035380_update_message_datetime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109112038363_update_message_date.cs" />
+    <Compile Include="Migrations\202109112038363_update_message_date.designer.cs">
+      <DependentUpon>202109112038363_update_message_date.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109112050379_update_message_bool.cs" />
+    <Compile Include="Migrations\202109112050379_update_message_bool.designer.cs">
+      <DependentUpon>202109112050379_update_message_bool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109120723381_update_message_mg.cs" />
+    <Compile Include="Migrations\202109120723381_update_message_mg.designer.cs">
+      <DependentUpon>202109120723381_update_message_mg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109120735038_update_message_mg1.cs" />
+    <Compile Include="Migrations\202109120735038_update_message_mg1.designer.cs">
+      <DependentUpon>202109120735038_update_message_mg1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -84,6 +120,32 @@
       <Project>{907A7FE4-6E14-4B6A-A316-A793BAF63D58}</Project>
       <Name>EntityLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202109100510256_update_database_test.resx">
+      <DependentUpon>202109100510256_update_database_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109111452094_add_draft_table.resx">
+      <DependentUpon>202109111452094_add_draft_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109111907457_update_message.resx">
+      <DependentUpon>202109111907457_update_message.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109112035380_update_message_datetime.resx">
+      <DependentUpon>202109112035380_update_message_datetime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109112038363_update_message_date.resx">
+      <DependentUpon>202109112038363_update_message_date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109112050379_update_message_bool.resx">
+      <DependentUpon>202109112050379_update_message_bool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109120723381_update_message_mg.resx">
+      <DependentUpon>202109120723381_update_message_mg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109120735038_update_message_mg1.resx">
+      <DependentUpon>202109120735038_update_message_mg1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -32,10 +32,20 @@ namespace MvcKamp.MvcUI.Controllers
         }
 
 
+          [HttpGet]
+          public ActionResult NewContentAdd()
+        {
+            return View();
+        }
 
 
-
-
+        [HttpPost]
+        public ActionResult NewContentAdd(Content content)
+        {
+            content.ContentDate = DateTime.Now;
+            _contentManager.Add(content);
+            return RedirectToAction("ContentByHeading");
+        }
 
     }
 }

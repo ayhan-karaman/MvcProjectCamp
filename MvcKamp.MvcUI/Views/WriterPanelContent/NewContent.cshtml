@@ -1,0 +1,31 @@
+﻿@model EntityLayer.Concrete.Content
+@{
+    ViewBag.Title = "NewContent";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row d-flex justify-content-around">
+        <div role="form" class="col-md-6 ">
+            @using (Html.BeginForm("NewContent", "WriterPanelContent", FormMethod.Post))
+            {
+                <br />
+                <div class="form-group">
+                    <input hidden type="text" name="HeadingId" value="@ViewBag.id" />
+                    <br />
+                    @Html.Label("İçeriğinizi Yazabilirsiniz :")
+                    @Html.TextAreaFor(h => h.ContentValue, new { @class = "form-control", @minlength = "1" })
+                    @Html.ValidationMessageFor(w => w.ContentValue, null, new { @class = "text-danger", @required = "" })
+                </div>
+             
+                <br />
+                <div class="col-md-12 d-flex justify-content-between">
+                    <button style="margin-bottom:10px" class="btn btn-info">Kaydet</button>
+                    <a href="/WriterPanelContent/MyContent" style="margin-bottom:10px" class="btn bg-indigo  "><i class="fas fa-backward"></i>  Geri Dön</a>
+
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

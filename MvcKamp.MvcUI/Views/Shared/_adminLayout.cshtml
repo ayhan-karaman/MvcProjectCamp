@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>AdminLTE 3 | Dashboard 3</title>
+    <title>Mvc Admin Paneli</title>
 
     <!-- Font Awesome Icons -->
     <link href="~/Content/toastr.css" rel="stylesheet" />
@@ -41,7 +41,7 @@ to get the desired effect
             <a href="index3.html" class="brand-link">
                 <img src="~/AdminLTE-3.0.4/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                      style="opacity: .8">
-                <span class="brand-text font-weight-light">AdminLTE 3</span>
+                <span class="brand-text font-weight-light">Mvc Admin Paneli</span>
             </a>
 
             <!-- Sidebar -->
@@ -61,8 +61,7 @@ to get the desired effect
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
-                        @if (User.IsInRole("B"))
-                        {
+                   
 
                             <li class="nav-item has-treeview menu-open">
                                 <a href="/AdminCategory/Index" class="nav-link ">
@@ -75,7 +74,7 @@ to get the desired effect
 
                             </li>
 
-                        }
+                        
                         <li class="nav-item">
                             <a href="~/Heading/Index" class="nav-link">
                                 <i class="fas fa-heading"></i>
@@ -147,7 +146,7 @@ to get the desired effect
 
 
                         <li class="nav-item">
-                            <a href="pages/calendar.html" class="nav-link">
+                            <a href="#" class="nav-link">
                                 <i class="fas fa-award"></i>
                                 <p>
                                     Yetkilendirmeler
@@ -184,7 +183,7 @@ to get the desired effect
 
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                            <a target="_blank" href="/Default/Headings" class="nav-link">
                                 <i class="fas fa-globe"></i>
                                 <p>
                                     Siteye Git
@@ -215,10 +214,11 @@ to get the desired effect
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-
+           
             <div class="content">
 
                 @RenderBody()
+             
                 <!-- /.container-fluid -->
             </div>
             <!-- /.content -->
