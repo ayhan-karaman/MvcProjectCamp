@@ -40,9 +40,14 @@ namespace MvcKamp.MvcUI.Controllers
            
 
             ValidationResult validationResult = validateWriter.Validate(writer);
+            var fullPath = Server.MapPath("~" + writer.WriterImage);
             if (Request.Files.Count > 0)
             {
-                ImageUpload(writer, "~/Images/GalleryImages/");
+                if (System.IO.File.Exists(fullPath) && fullPath != Server.MapPath("~/Images/WriterAvatars/defaultavatar.png"))
+                {
+                    System.IO.File.Delete(fullPath);
+                }
+                ImageUpload(writer, "~/Images/WriterAvatars/");
             }
             if (validationResult.IsValid)
             {

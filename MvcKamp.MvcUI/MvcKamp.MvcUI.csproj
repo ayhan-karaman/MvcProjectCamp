@@ -2613,6 +2613,7 @@
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
     <Content Include="Images\TalentProfileImg\talentimg.jfif" />
+    <Content Include="Images\WriterAvatars\defaultavatar.png" />
     <Content Include="ScreenShot\Statistics.png" />
     <Content Include="ScreenShot\talent.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />

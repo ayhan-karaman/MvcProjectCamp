@@ -36,6 +36,9 @@ namespace MvcKamp.MvcUI.Controllers
             return View();
         }
 
+
+
+
         private void ImageUpload(ImageFile file, string imagePath)
         {
             string extension = Path.GetExtension(Request.Files[0].FileName);
@@ -44,6 +47,9 @@ namespace MvcKamp.MvcUI.Controllers
             Request.Files[0].SaveAs(Server.MapPath(path));
             file.ImagePath = path.Substring(1, path.Length - 1);
         }
+
+
+
 
         public PartialViewResult ImagePartial()
         {

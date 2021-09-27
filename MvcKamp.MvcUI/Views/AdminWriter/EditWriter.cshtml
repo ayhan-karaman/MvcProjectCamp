@@ -35,7 +35,9 @@
 
                 <br />
                 @Html.Label("Yazar Görsel Link");
+               
                 @Html.TextBoxFor(w => w.WriterImage, new { @class = "form-control", @type = "file" })
+                @Html.HiddenFor(w => w.WriterImage);
                 @Html.ValidationMessageFor(w => w.WriterImage)
                 <br />
                 @Html.HiddenFor(w => w.WriterPassword, new { @class = "form-control" })

@@ -75,6 +75,7 @@ namespace MvcKamp.MvcUI.Controllers
             {
                 var hashPassword = Hashing.HashString(writer.WriterPassword);
                 writer.WriterPassword = hashPassword;
+                writer.WriterImage = "/Images/WriterAvatars/defaultavatar.png";
                 writer.WriterStatus = true;
                 writerManager.Add(writer);
                 ToastrService.AddToQueue(new Toastr("Kaydınız Oluşturuldu Giriş Yapınız", "Başarılı İşlem", ToastrType.Success));
