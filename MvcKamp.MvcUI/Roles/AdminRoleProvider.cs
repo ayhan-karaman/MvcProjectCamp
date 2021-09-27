@@ -44,7 +44,7 @@ namespace MvcKamp.MvcUI.Roles
 
             if (x!=null)
             {
-                return new string[] { x.AdminRole };
+                return new string[] { x.Role.Name };
             }
             else if (w!=null)
             {

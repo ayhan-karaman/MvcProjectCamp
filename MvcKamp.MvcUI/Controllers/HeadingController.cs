@@ -3,9 +3,9 @@ using EntityLayer.Concrete;
 using DataAccessLayer.Concrete.Repositories.EntityFramework;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+
 using System.Web.Mvc;
+using System.Linq;
 
 namespace MvcKamp.MvcUI.Controllers
 {
@@ -15,6 +15,13 @@ namespace MvcKamp.MvcUI.Controllers
         CategoryManager _category = new CategoryManager(new EfCategoryDal());
         WriterManager _writer= new WriterManager(new EfWriterDal());
         public ActionResult Index()
+        {
+            var headingValues = _headingManager.GetAll();
+            return View(headingValues);
+        }
+
+
+        public ActionResult HeadingReport()
         {
             var headingValues = _headingManager.GetAll();
             return View(headingValues);

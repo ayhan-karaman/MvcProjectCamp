@@ -1,8 +1,57 @@
-﻿
+﻿@model EntityLayer.Concrete.Writer
 @{
     ViewBag.Title = "WriterProfile";
     Layout = "~/Views/Shared/_WriterLayout.cshtml";
 }
 
-<h2>WriterProfile</h2>
+<br />
+
+<div class="container">
+    <div class="row d-flex justify-content-around">
+        <div class="col-md-6">
+            @using (Html.BeginForm("WriterProfile", "WriterPanel", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            {
+
+
+                @Html.HiddenFor(w => w.Id, new { @class = "form-control" })
+                @Html.Label("Yazar Adı");
+                @Html.TextBoxFor(w => w.WriterName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(w => w.WriterName)
+                <br />
+                @Html.Label("Yazar Soyadı");
+                @Html.TextBoxFor(w => w.WriterSurName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(w => w.WriterSurName)
+                <br />
+                @Html.Label("Yazar Hakkında");
+                @Html.TextBoxFor(w => w.WriterAbout, new { @class = "form-control" })
+                @Html.ValidationMessageFor(w => w.WriterAbout)
+                <br />
+                @Html.Label("Yazar Ünvanı");
+                @Html.TextBoxFor(w => w.WriterTitle, new { @class = "form-control" })
+                @Html.ValidationMessageFor(w => w.WriterTitle, "", new { @class = "text-danger" })
+                <br />
+
+                @Html.Label("Yazar Email");
+                @Html.TextBoxFor(w => w.WriterEmail, new { @class = "form-control" })
+                @Html.ValidationMessageFor(w => w.WriterEmail)
+
+                <br />
+
+              
+                @Html.HiddenFor(w => w.WriterPassword, new { @class = "form-control" })
+             
+
+                <br />
+                @Html.Label("Yazar Görsel Link");
+                @Html.TextBoxFor(w => w.WriterImage, new { @class = "form-control", @type = "file" })
+                @Html.ValidationMessageFor(w => w.WriterImage)
+                <br />
+
+
+                <button style="margin-bottom:10px" class="btn btn-info">Değişiklikleri Kaydet</button>
+            }
+
+        </div>
+    </div>
+</div>
 

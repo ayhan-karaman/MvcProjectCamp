@@ -1,12 +1,7 @@
 ﻿using BusinessLayer.Concrete;
 using BusinessLayer.Utilities.HashHelper;
-using DataAccessLayer.Concrete;
 using DataAccessLayer.Concrete.Repositories.EntityFramework;
 using EntityLayer.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -17,7 +12,7 @@ namespace MvcKamp.MvcUI.Controllers
     {
         // GET: Login
         AdminManager context = new AdminManager(new EfAdminDal());
-        WriterManager writerManager = new WriterManager(new EfWriterDal());
+        WriterLoginManager writerManager = new WriterLoginManager(new EfWriterDal());
         [HttpGet]
         public ActionResult Index()
         {
@@ -27,13 +22,18 @@ namespace MvcKamp.MvcUI.Controllers
         [HttpPost]
         public ActionResult Index(Admin admin)
         {
-            var result =   Hashing.CreateHashing(admin.AdminPassword);
+
+            var result = Hashing.HashString(admin.AdminPassword);
             admin.AdminPassword = result;
+
             var adminUserInfo = context.GetByAdminUserName(admin.AdminUserName, admin.AdminPassword);
+           
+           
             if (adminUserInfo != null )
             {
                 FormsAuthentication.SetAuthCookie(adminUserInfo.AdminUserName,false);
                 Session["AdminUserName"] = adminUserInfo.AdminUserName;
+             
                 ViewBag.UserName = adminUserInfo.AdminUserName;
                 ToastrService.AddToQueue(new Toastr("Giriş Yapıldı", "Başarılı", ToastrType.Success));
                 return RedirectToAction("Index", "AdminCategory");
@@ -56,22 +56,23 @@ namespace MvcKamp.MvcUI.Controllers
         [HttpGet]
         public ActionResult WriterLogin()
         {
+
             return View();
         }
 
         [HttpPost]
         public ActionResult WriterLogin(Writer writer)
         {
-            var result = Hashing.CreateHashing(writer.WriterPassword);
+            var result = Hashing.HashString(writer.WriterPassword);
             writer.WriterPassword = result;
-            var WriterUserInfo = writerManager.GetByEmailAndPassword(writer.WriterEmail, writer.WriterPassword);
+            var WriterUserInfo = writerManager.GetWriter(writer.WriterEmail, writer.WriterPassword);
             if (WriterUserInfo != null)
             {
                 FormsAuthentication.SetAuthCookie(WriterUserInfo.WriterEmail, false);
                 Session["WriterEmail"] = WriterUserInfo.WriterEmail;
                 Session["Id"] = WriterUserInfo.Id;
                 Session["WriterUserName"] = WriterUserInfo.WriterName + " " + WriterUserInfo.WriterSurName;
-               
+                Session["WriterImg"] = "~"+ WriterUserInfo.WriterImage;
                 ViewBag.UserName = WriterUserInfo.WriterName + WriterUserInfo.WriterSurName;
                 ToastrService.AddToQueue(new Toastr("Yazar Girişi Yapıldı", "Başarılı", ToastrType.Success));
                 return RedirectToAction("MyHeading", "WriterPanel");

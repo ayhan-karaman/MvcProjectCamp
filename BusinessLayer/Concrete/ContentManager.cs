@@ -48,6 +48,15 @@ namespace BusinessLayer.Concrete
             return _contentDal.GetAll(c => c.WriterId == id);
         }
 
+        public List<Content> GetContains(string val)
+        {
+            if (!string.IsNullOrEmpty(val))
+            {
+                return _contentDal.GetAll(c => c.ContentValue.ToLower().Contains(val.ToLower()));
+            }
+            return _contentDal.GetAll();
+        }
+
         public void Update(Content content)
         {
             _contentDal.Update(content);

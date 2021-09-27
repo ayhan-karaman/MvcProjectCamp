@@ -12,6 +12,7 @@
     <title>Mvc Admin Paneli</title>
 
     <!-- Font Awesome Icons -->
+
     <link href="~/Content/toastr.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
     <!-- IonIcons -->
@@ -20,6 +21,8 @@
     <link rel="stylesheet" href="~/AdminLTE-3.0.4/dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+ 
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -62,19 +65,22 @@ to get the desired effect
                         <!-- Add icons to the links using the .nav-icon class
     with font-awesome or any other icon font library -->
 
-
-                        <li class="nav-item has-treeview menu-open">
-                            <a href="/AdminCategory/Index" class="nav-link ">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Kategoriler
-
-                                </p>
-                            </a>
-
-                        </li>
+                        @if (User.IsInRole("A"))
+                        {
 
 
+                            <li class="nav-item has-treeview menu-open">
+                                <a href="/AdminCategory/Index" class="nav-link ">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Kategoriler
+
+                                    </p>
+                                </a>
+
+                            </li>
+
+                        }
                         <li class="nav-item">
                             <a href="~/Heading/Index" class="nav-link">
                                 <i class="fas fa-heading"></i>
@@ -104,23 +110,18 @@ to get the desired effect
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/charts/chartjs.html" class="nav-link">
+                                    <a href="/Chart/Index" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Grafik 1</p>
+                                        <p>Kategoriye Göre Başlık</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/charts/flot.html" class="nav-link">
+                                    <a href="/Chart/HeadingIndex" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Grafik 2</p>
+                                        <p>Başlığa Göre İçerik</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="pages/charts/inline.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Grafik 3</p>
-                                    </a>
-                                </li>
+
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
@@ -128,6 +129,16 @@ to get the desired effect
                                 <i class="far fa-address-card"></i>
                                 <p>
                                     Hakkımızda
+
+                                </p>
+                            </a>
+
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="/Heading/HeadingReport" class="nav-link">
+                                <i class="fas fa-table"></i>
+                                <p>
+                                    Raporlar
 
                                 </p>
                             </a>
@@ -144,16 +155,20 @@ to get the desired effect
 
                         </li>
 
+                        @if (User.IsInRole("A"))
+                        {
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-award"></i>
-                                <p>
-                                    Yetkilendirmeler
 
-                                </p>
-                            </a>
-                        </li>
+                            <li class="nav-item">
+                                <a href="/Authorization/Index" class="nav-link">
+                                    <i class="fas fa-thumbs-up"></i>
+                                    <p>
+                                        Yetkilendirmeler
+
+                                    </p>
+                                </a>
+                            </li>
+                        }
                         <li class="nav-item">
                             <a href="/TalentCard/Index" class="nav-link">
                                 <i class="fas fa-award"></i>
@@ -168,6 +183,14 @@ to get the desired effect
                                 <i class="nav-icon far fa-image"></i>
                                 <p>
                                     Galeri
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Calender/Index/" class="nav-link">
+                                <i class="nav-icon far fa-calendar-check"></i>
+                                <p>
+                                    Takvim
                                 </p>
                             </a>
                         </li>
@@ -192,7 +215,7 @@ to get the desired effect
 
                         </li>
                         <li class="nav-item has-treeview">
-                            <a target="_blank" href="/Default/Headings" class="nav-link">
+                            <a target="_blank" href="/Home/HomePage" class="nav-link">
                                 <i class="fas fa-globe"></i>
                                 <p>
                                     Siteye Git
@@ -223,11 +246,11 @@ to get the desired effect
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-           
+
             <div class="content">
 
                 @RenderBody()
-             
+
                 <!-- /.container-fluid -->
             </div>
             <!-- /.content -->
@@ -240,6 +263,7 @@ to get the desired effect
 
     <script src="~/Scripts/jquery-3.4.1.js"></script>
     <script src="~/Scripts/toastr.js"></script>
+
     <!-- Bootstrap -->
     <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.js"></script>
     <!-- AdminLTE -->
@@ -250,9 +274,15 @@ to get the desired effect
     <script src="~/AdminLTE-3.0.4/plugins/chart.js/Chart.js"></script>
     <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
     <script src="~/AdminLTE-3.0.4/dist/js/pages/dashboard3.js"></script>
+
+
+
+
+
+
     @ToastrHelper.ProcessToastrs()
     @RenderSection("_Scripts", false)
 
-</body>
+    </body>
 </html>
 

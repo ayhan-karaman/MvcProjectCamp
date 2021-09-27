@@ -25,6 +25,7 @@ namespace BusinessLayer.Concrete
         public void Add(Category category)
         {
 
+            category.CategoryStatus = true;
             _categoryDal.Add(category);
         }
 

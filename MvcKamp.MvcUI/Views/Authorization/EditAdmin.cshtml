@@ -1,0 +1,35 @@
+﻿@model EntityLayer.Concrete.Admin
+@{
+    ViewBag.Title = "EditAdmin";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+
+
+<br />
+<div class="container">
+    <div class="row d-flex justify-content-around">
+        <div role="form" class="col-md-6 ">
+            @using (Html.BeginForm("EditAdmin", "Authorization", FormMethod.Post))
+            {
+            <div>
+                @Html.Label("Admin Kullanıcı Adı")
+                @Html.TextBoxFor(c => c.AdminUserName, new { @class = "form-control" })
+
+                <br />
+                @Html.HiddenFor(c => c.AdminPassword, new { @class = "form-control" })
+                <br />
+                @Html.Label("Rolü Seçiniz")
+                @Html.DropDownListFor(c => c.RoleId, (List<SelectListItem>)ViewBag.SelectRoles, new { @class = "form-control" })
+                <br />
+                <div class="d-flex justify-content-between">
+
+                    <a href="/Authorization/Index" class="btn btn-warning"><i class="fas fa-backward"></i> Geri Dön</a>
+                    <button class="btn btn-info"><i class="far fa-save"></i> Yetkiyi Güncelle</button>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>
+

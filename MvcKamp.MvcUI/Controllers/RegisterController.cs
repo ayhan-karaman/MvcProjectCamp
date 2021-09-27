@@ -4,12 +4,8 @@ using BusinessLayer.ValidationRules.FluentValidation;
 using DataAccessLayer.Concrete.Repositories.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MvcKamp.MvcUI.Controllers
@@ -22,15 +18,17 @@ namespace MvcKamp.MvcUI.Controllers
         AdminValidator validations = new AdminValidator();
         WriterManager writerManager = new WriterManager(new EfWriterDal());
         WriterValidator validationRules = new WriterValidator();
+        RoleManager roleManager = new RoleManager(new EfRoleDal());
 
-    
-       
 
-     
+
+
 
         [HttpGet]
         public ActionResult Register()
         {
+            List<SelectListItem> selectRoles = SelectListRoles();
+            ViewBag.SelectRoles = selectRoles;
             return View();
         }
 
@@ -42,7 +40,7 @@ namespace MvcKamp.MvcUI.Controllers
            
             if (validationResult.IsValid)
             {
-               var  hashPassword =  Hashing.CreateHashing(admin.AdminPassword);
+               var  hashPassword =  Hashing.HashString(admin.AdminPassword);
                 admin.AdminPassword = hashPassword;
                 adminManager.Add(admin);
                 ToastrService.AddToQueue(new Toastr("Kaydınız Oluşturuldu Giriş Yapınız", "Başarılı İşlem", ToastrType.Success));
@@ -75,7 +73,7 @@ namespace MvcKamp.MvcUI.Controllers
             var result = writerManager.GetByEmail(writer.WriterEmail);
             if (validationResult.IsValid && result == null)
             {
-                var hashPassword = Hashing.CreateHashing(writer.WriterPassword);
+                var hashPassword = Hashing.HashString(writer.WriterPassword);
                 writer.WriterPassword = hashPassword;
                 writer.WriterStatus = true;
                 writerManager.Add(writer);
@@ -99,6 +97,14 @@ namespace MvcKamp.MvcUI.Controllers
             return View();
 
         }
-
+        private List<SelectListItem> SelectListRoles()
+        {
+            return (from r in roleManager.GetAll()
+                    select new SelectListItem
+                    {
+                        Text = r.Name,
+                        Value = r.Id.ToString()
+                    }).ToList();
+        }
     }
 }

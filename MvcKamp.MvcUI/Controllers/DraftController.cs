@@ -1,10 +1,5 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.Concrete.Repositories.EntityFramework;
-using EntityLayer.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MvcKamp.MvcUI.Controllers

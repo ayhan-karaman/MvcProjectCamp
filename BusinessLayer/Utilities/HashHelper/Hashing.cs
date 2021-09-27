@@ -9,14 +9,38 @@ namespace BusinessLayer.Utilities.HashHelper
 {
    public class Hashing
     {
-       private static SHA1 _sha1 = new SHA1CryptoServiceProvider();
+      
+
+
+
+       public static string HashString(string password)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            foreach (byte b in GetHash(password))
+            {
+                stringBuilder.Append(b.ToString("X2"));
+            }
+            return stringBuilder.ToString();
+        }
+
+        private static byte[] GetHash(string password)
+        {
+            using (HashAlgorithm algorithm = SHA512.Create())
+            {
+                return algorithm.ComputeHash(Encoding.UTF8.GetBytes(password));
+            }
+        }
+
+ 
+
 
        
 
-        public static string CreateHashing(string password)
-        {
-           var hashed =  Convert.ToBase64String(_sha1.ComputeHash(Encoding.UTF8.GetBytes(password)));
-            return hashed;
-        }
+
+
+
+
+
+
     }
 }

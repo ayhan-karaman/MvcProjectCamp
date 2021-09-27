@@ -30,7 +30,9 @@
                     </div>
                     <div class="signin-form">
                         <h2 class="form-title">Kayıt Ol</h2>
-                        <form method="POST" class="register-form" id="login-form">
+                      
+                        @using (Html.BeginForm("Register", "Register", FormMethod.Post,  new { @class = "register-form" }))
+                        {
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="AdminUserName" id="AdminUserName" placeholder="Kullanıcı Adınız!" />
@@ -39,15 +41,12 @@
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="AdminPassword" id="AdminPassword" placeholder="Şifreniz!" />
                             </div>
-                            <div class="form-group">
-                                <label for="your_name"><i class="zmdi zmdi-receipt"></i></label>
-                                <input type="text" name="AdminRole" id="AdminRole" placeholder="Rolünüz!" />
-                            </div>
+                               
+                           
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="Kayıt Olun!" />
                             </div>
-                        </form>
-
+                        }
                     </div>
                 </div>
             </div>

@@ -3,10 +3,6 @@ using BusinessLayer.ValidationRules.FluentValidation;
 using DataAccessLayer.Concrete.Repositories.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MvcKamp.MvcUI.Controllers
@@ -60,7 +56,7 @@ namespace MvcKamp.MvcUI.Controllers
             _ = categoryValue.CategoryStatus == false ? categoryValue.CategoryStatus = true 
                 : categoryValue.CategoryStatus = false;
             _category.Update(categoryValue);
-            ToastrService.AddToQueue(new Toastr("Kategori Silindi..", "Silme İşlemi", ToastrType.Warning));
+            ToastrService.AddToQueue(new Toastr("Kategori Durumu Değiştirildi..", "Durum Güncelleme", ToastrType.Info));
             return RedirectToAction("Index");
         }
 

@@ -20,12 +20,16 @@ namespace BusinessLayer.Concrete
 
         public void Add(Admin admin)
         {
+             admin.AdminStatus = true;
+            admin.RoleId = 5;
             _adminDal.Add(admin);
         }
 
         public void Delete(Admin admin)
         {
-            _adminDal.Delete(admin);
+            var result = _adminDal.Get(x => x.Id == admin.Id);
+            _ = result.AdminStatus == false ? result.AdminStatus = true : result.AdminStatus = false;
+            _adminDal.Update(result);
         }
 
         public List<Admin> GetAll()
@@ -45,6 +49,7 @@ namespace BusinessLayer.Concrete
 
         public void Update(Admin admin)
         {
+          
             _adminDal.Update(admin);
         }
     }

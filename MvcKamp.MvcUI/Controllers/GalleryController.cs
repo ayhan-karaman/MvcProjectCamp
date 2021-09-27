@@ -2,10 +2,7 @@
 using DataAccessLayer.Concrete.Repositories.EntityFramework;
 using EntityLayer.Concrete;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MvcKamp.MvcUI.Controllers
@@ -56,8 +53,20 @@ namespace MvcKamp.MvcUI.Controllers
         public ActionResult Delete(int id)
         {
             var imageValue = fileManager.GetById(id);
-            fileManager.Delete(imageValue);
-            return RedirectToAction("Index");
+            var fullPath = Server.MapPath("~"+imageValue.ImagePath);
+
+            if (!System.IO.File.Exists(fullPath))
+            {
+                ToastrService.AddToQueue(new Toastr("Dosya Bulunamadı ", "Silme İşlemi Başrısız"));
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                System.IO.File.Delete(fullPath);
+                fileManager.Delete(imageValue);
+                ToastrService.AddToQueue(new Toastr( imageValue.ImageName+" İsimli Fotoğraf Silindi", "Silme İşlemi Başrısız"));
+                return RedirectToAction("Index");
+            }
         }
 
     }
